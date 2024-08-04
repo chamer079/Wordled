@@ -62,4 +62,4 @@
 ```
 
 ## Wireframe
-[Take a peak at the wireframe here.](https://www.figma.com/proto/Hm7sYLy7xYfgoEL5ow7ds2/Wordled?node-id=0-1&t=f99EDojvJDawTTFb-1)
+[Here's a sneak peak.](https://www.figma.com/proto/Hm7sYLy7xYfgoEL5ow7ds2/Wordled?node-id=0-1&t=f99EDojvJDawTTFb-1)
