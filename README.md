@@ -8,7 +8,7 @@
 
 
 ## Attributions
- lore ipsum placeholder - TBD
+
 
 ## Technologies Used
 1. JavaScript
@@ -17,4 +17,5 @@
 
 
 ## Next Steps
- * PMVP goes here
+ * Use an API to pull a bigger variety of 5 letter words.
+ * Incorporate a landing page intorducing the game and playing instructions.
