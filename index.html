@@ -5,9 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/app.js" defer></script>
     <link rel="stylesheet" href="./css/style.css">
-    <title>Project 1 Game-TBD</title>
+    <title>Wordled</title>
 </head>
 <body>
-    <h1>Project 1 Game - TBD</h1>
+    <h1>WORDLED</h1>
+    <main>
+        <section id="game-board">
+            <div class="word-display">
+                <div class="display-row">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="display-row">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="display-row">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="display-row">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="display-row">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+                <div class="display-row">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                </div>
+            </div>
+            <div class="keyboard">
+                <div class="key-row">
+                    <div class="tile" id="q">Q</div>
+                    <div class="tile" id="w">W</div>
+                    <div class="tile" id="e">E</div>
+                    <div class="tile" id="r">R</div>
+                    <div class="tile" id="t">T</div>
+                    <div class="tile" id="y">Y</div>
+                    <div class="tile" id="u">U</div>
+                    <div class="tile" id="i">I</div>
+                    <div class="tile" id="o">O</div>
+                    <div class="tile" id="p">P</div>
+                </div>
+                <div class="key-row">
+                    <div class="tile" id="a">A</div>
+                    <div class="tile" id="s">S</div>
+                    <div class="tile" id="d">D</div>
+                    <div class="tile" id="f">F</div>
+                    <div class="tile" id="g">G</div>
+                    <div class="tile" id="h">H</div>
+                    <div class="tile" id="j">J</div>
+                    <div class="tile" id="k">K</div>
+                    <div class="tile" id="l">L</div>
+                </div>
+                <div class="key-row">
+                    <div class="tile" id="delete">Delete</div>
+                    <div class="tile" id="z">Z</div>
+                    <div class="tile" id="x">X</div>
+                    <div class="tile" id="c">C</div>
+                    <div class="tile" id="v">V</div>
+                    <div class="tile" id="b">B</div>
+                    <div class="tile" id="n">N</div>
+                    <div class="tile" id="m">M</div>
+                    <div class="tile" id="enter">Enter</div>
+                </div>
+            </div>
+        </section>
+        <section id="instructions">
+            <h2>How to Play</h2>
+            <p>The player has 6 chances to correctly guess a 5 letter word. The squares will change color to represent one of the following scenarios:</p>
+            <p>1) The square will be grayed out if the letter is not in the word.</p>
+            <div class="display-row">
+                <div class="tile"></div>
+                <div class="tile gray-b">E</div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+            <p>2) The square will turn yellow if the letter is in the word, but in the wrong space.</p>
+            <div class="example-row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile yellow-b">B</div>
+            </div>
+            <p>3) The square will turn green if the letter is in the word and in the correct space.</p>
+            <div class="display-row">
+                <div class="tile green-b">B</div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
