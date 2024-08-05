@@ -120,11 +120,86 @@ h2 {
 @media only screen and (max-width: 900px) {
     body {
         display: flex;
+        background-color: red;
     } 
 
     main {
         flex-flow: row wrap;
+     }    
+
+     #game-board {
+        height: 550px;
      }
 
+     #instructions {
+        border: 3px solid tomato;
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+}
+
+
+@media only screen and (max-width: 520px) {
+    body {
+        display: flex;
+        background-color: aqua;
+    }
     
+    main {
+        /* border: 3px solid black; */
+        height: 100%;
+    }
+
+    h1 {
+        /* border: 3px solid goldenrod; */
+    }
+
+    #game-board {
+        /* border: 3px solid red; */
+        height: 550px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .tile {
+        width: 45px;
+        height: 45px;
+        font-size: 30px;
+        margin: 2px;
+    }
+
+    .keyboard .tile {
+        /* display: flex; */
+        /* border: 3px solid purple; */
+        width: 30px;
+        height: 50px;
+        font-size: 25px;
+        border-radius: 5px;
+    }
+
+    #delete {
+        font-size: 20px;
+        width: 65px;
+    }
+
+    #enter {
+        font-size: 20px;
+        width: 65px;
+    }
+
+    /* #instructions {
+        border: 3px solid tomato;
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        letter-spacing: 1px;
+        text-align: center;
+    } */
+
+    h2 {
+        font-size: 40px;
+    } 
 }
