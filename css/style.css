@@ -4,8 +4,37 @@
 
 body {
     display: flex;
+    width: 100vh;
 }
+
 main {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+.display-row {
+    display: inline-flex;;
+    border: 1px solid red;
+   
+}
+
+.tile {
+    /* display: flex; */  /* <-- keep untill the end. might not need to use */
+    background-color: #DEDEDE;
+    border: 2px solid #000000;
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    font-size: 25px;
+
+}
+
+.example-row {
+    display: inline-flex;
+}
+
+.keyboard {
+    display: flex;
+    
 }
