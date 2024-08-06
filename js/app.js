@@ -35,7 +35,6 @@ const deleteEl = document.querySelector("#delete")
 const enterEl = document.querySelector("#enter")
 const messageEl = document.querySelector("#message")
 
-
 /*-------------------------------- Functions --------------------------------*/
 // Step 4. Upon loading, the game state should be initialized, and a function should be called to render this game state
     // a. create and init()
