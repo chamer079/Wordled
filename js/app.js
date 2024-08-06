@@ -19,11 +19,13 @@ const wordBank = [
     "RELAX"
 ]
 
-
 /*---------------------------- Variables (state) ----------------------------*/
-// Step 2. Define required variables to track the state of the game. -> player(do I need a player variable for a 1 person game?), board, winner, randomWord, guessedWord
-
-
+// Step 2. Define required variables to track the state of the game. 
+let player  // <-necessary to have this for a 1 player game? will revisit
+let board
+let winner
+let randomWord
+let guessWord
 
 /*------------------------ Cached Element References ------------------------*/
 // Step 3. Store cache element refernces. -> .keyboard(?), .key-row, .word-display, .dispaly-row(?), #delete, #enter
