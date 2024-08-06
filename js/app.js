@@ -72,7 +72,8 @@ function updateBoard(){
     // *** displayBoard ***
     displayBoard.forEach((row) => {
         row.forEach((tile, idx) => {
-            tileEls[idx].style.background = "black"
+            tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
+            // tileEls[idx].textContent = "w" //<- if inputting "whale", will render "whale" 5x
         })
     })
 
