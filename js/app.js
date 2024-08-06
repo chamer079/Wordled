@@ -16,7 +16,11 @@ const wordBank = [
     "AGREE",
     "GRAIN",
     "SCORE",
-    "RELAX"
+    "RELAX",
+    "BLANK",
+    "ACORN",
+    "SNACK",
+    "APPLE"
 ]
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -37,12 +41,22 @@ const messageEl = document.querySelector("#message")
 
 /*-------------------------------- Functions --------------------------------*/
 // Step 4. Upon loading, the game state should be initialized, and a function should be called to render this game state
-    // a. create and init()
-    // b. set board to and array with 30 empty string - 5x6
-    // c. set winner to false
-    // d. set randomWord to randomly assign a word from wordBank -> Math.random() & Math.floor()?
-    // e. set gessedWord to an empty string
-
+function init(){
+    board = [   // <- realized the need for neseted arr due to words.  is correct?
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""]
+    ]
+    winner = false
+    randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
+    console.log("test randomWord", randomWord)
+    guessWord = ""
+} 
+init()
+    
 // Step 5. The state of the game should be rendered to the user.
     // a. create render function
     // b.  create updateBoard function
