@@ -61,7 +61,10 @@ init()
 // Step 5. The state of the game should be rendered to the user.
 function render(){
     // console.log("HI RENDER()!")
+    updateBoard()
 }
+render()
+
 // console.log("test render()", render())
 
 function updateBoard(){
