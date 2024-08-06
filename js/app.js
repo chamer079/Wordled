@@ -28,8 +28,12 @@ let randomWord
 let guessWord
 
 /*------------------------ Cached Element References ------------------------*/
-// Step 3. Store cache element refernces. -> .keyboard(?), .key-row, .word-display, .dispaly-row(?), #delete, #enter
-
+// Step 3. Store cache element refernces. 
+const keyRowEls = document.querySelectorAll(".key-row")
+const displayRowEls = document.querySelectorAll(".display-row")
+const deleteEl = document.querySelector("#delete")
+const enterEl = document.querySelector("#enter")
+const messageEl = document.querySelector("#message")
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -78,4 +82,3 @@ let guessWord
         // call checkForWinner() in handleClick
 
     // Step 6.3: call the render() in handleClick
-           
