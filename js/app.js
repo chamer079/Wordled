@@ -26,7 +26,7 @@ const wordBank = [
 /*---------------------------- Variables (state) ----------------------------*/
 // Step 2. Define required variables to track the state of the game. 
 let player  // <-necessary to have this for a 1 player game? will revisit
-let board
+let displayBoar
 let winner
 let randomWord
 let guessWord
@@ -42,7 +42,7 @@ const messageEl = document.querySelector("#message")
 /*-------------------------------- Functions --------------------------------*/
 // Step 4. Upon loading, the game state should be initialized, and a function should be called to render this game state
 function init(){
-    board = [   // <- realized the need for neseted arr due to words.  is correct?
+    displayBoard = [   // <- realized the need for neseted arr due to words.  is correct?
         ["", "", "", "", ""],
         ["", "", "", "", ""],
         ["", "", "", "", ""],
@@ -58,12 +58,28 @@ function init(){
 init()
     
 // Step 5. The state of the game should be rendered to the user.
-    // a. create render function
-    // b.  create updateBoard function
-        // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
-             // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
-             // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
-             // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
+function render(){
+    // console.log("HI RENDER()!")
+}
+console.log("test render()", render())
+
+function updateBoard(){
+    // console.log("UPDATE BOARD()")
+
+    // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
+
+
+
+        // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
+        // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
+        // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
+
+
+}
+console.log("test updateBoard()", updateBoard())
+
+
+
     // d. create updateMessage function
         // e. render a message if the word entered is: 
             // e1. too short -> < randomWord.length 
