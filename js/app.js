@@ -62,6 +62,7 @@ init()
 function render(){
     // console.log("HI RENDER()!")
     updateBoard()
+    updateMessage()
 }
 render()
 
@@ -75,28 +76,41 @@ function updateBoard(){
             tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
             // tileEls[idx].textContent = "w" //<- if inputting "whale", will render "whale" 5x
         })
+
+        
+        // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
+    
+    
+    
+            // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
+            // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
+            // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
     })
 
-    // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
-
-
-
-        // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
-        // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
-        // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
 
 
 }
 // console.log("test updateBoard()", updateBoard())
 
+function updateMessage(){
+    // console.log("UPDATE MESSAGE()")
+    // messageEl.textContent = "TEST"
+   
+    // f. render a message that if the player won or lost -> ?? would it be better to place this message in checkForWinner()??
+    if(winner === false){
+        messageEl.textContent = "Better luck next time. Want to try again?"
+        // console.log("winner = false")
+    } else{
+        messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
+        // console.log("winner = true")
+    }
+    
+    // e. render a message if the word entered is: 
+        // e1. too short -> < randomWord.length 
+        // e2. too long -> > randomWord.length
+}
+// console.log("updateMessage test: updateMessage()")
 
-
-    // d. create updateMessage function
-        // e. render a message if the word entered is: 
-            // e1. too short -> < randomWord.length 
-            // e2. too long -> > randomWord.length
-        // f. render a message that if the player won or lost -> ?? would it be better to place this message in checkForWinner()??
-    // g. call render() in the init()    
 
 // Step 7. create a reset functionality
 
