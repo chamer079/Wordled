@@ -26,7 +26,7 @@ const wordBank = [
 /*---------------------------- Variables (state) ----------------------------*/
 // Step 2. Define required variables to track the state of the game. 
 let player  // <-necessary to have this for a 1 player game? will revisit
-let displayBoar
+let displayBoard
 let winner
 let randomWord
 let guessWord
@@ -35,6 +35,7 @@ let guessWord
 // Step 3. Store cache element refernces. 
 const keyRowEls = document.querySelectorAll(".key-row")
 const displayRowEls = document.querySelectorAll(".display-row")
+const tileEls = document.querySelectorAll(".tile")
 const deleteEl = document.querySelector("#delete")
 const enterEl = document.querySelector("#enter")
 const messageEl = document.querySelector("#message")
@@ -52,7 +53,7 @@ function init(){
     ]
     winner = false
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
-    console.log("test randomWord", randomWord)
+    console.log("randomWord test:", randomWord)
     guessWord = ""
 } 
 init()
@@ -61,10 +62,16 @@ init()
 function render(){
     // console.log("HI RENDER()!")
 }
-console.log("test render()", render())
+// console.log("test render()", render())
 
 function updateBoard(){
     // console.log("UPDATE BOARD()")
+    // *** displayBoard ***
+    displayBoard.forEach((row) => {
+        row.forEach((tile, idx) => {
+            tileEls[idx].style.background = "black"
+        })
+    })
 
     // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
 
@@ -76,7 +83,7 @@ function updateBoard(){
 
 
 }
-console.log("test updateBoard()", updateBoard())
+// console.log("test updateBoard()", updateBoard())
 
 
 
