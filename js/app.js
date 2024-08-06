@@ -1,6 +1,23 @@
 /*-------------------------------- Constants --------------------------------*/
 // Step1. Create an wordBank array of a minimum of 13 words.
-
+const wordBank = [
+    "BLAST",
+    "PEACH",
+    "CHEER",
+    "FROST",
+    "COAST",
+    "GHOST",
+    "PIVOT",
+    "TIPSY",
+    "ZOMBI",
+    "TWICE",
+    "FALSE",
+    "QUEST",
+    "AGREE",
+    "GRAIN",
+    "SCORE",
+    "RELAX"
+]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
