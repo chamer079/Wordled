@@ -16,8 +16,6 @@ main {
     width: 97vw;
     height: auto;
     justify-content: space-around;
-    
-    
 }
 
 h1 {
@@ -32,6 +30,7 @@ h1 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    height: 520px;
 }
 
 .word-display {
@@ -78,10 +77,18 @@ h1 {
     width: 90px;
 }
 
+button {
+    display: flex;
+    font-size: 25px;
+    background-color: #DEDEDE;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.325);
+    font-weight: bold;
+}
+
 #instructions {
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-around;
     width: 400px;
 }
 
