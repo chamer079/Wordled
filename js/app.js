@@ -28,7 +28,6 @@ const wordBank = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 // Step 2. Define required variables to track the state of the game. 
-let player  // <-necessary to have this for a 1 player game? will revisit
 let displayBoard
 let winner
 let randomWord
@@ -51,10 +50,10 @@ const keyIndex = document.querySelector(".keyboard")
 // Step 4. Upon loading, the game state should be initialized, and a function should be called to render this game state
 function init(){
     displayBoard = [   // <- realized the need for neseted arr due to words.  is correct?
-        ["", "", "", "", ""],
-        ["", "", "", "", ""],
-        ["", "", "", "", ""],
-        ["", "", "", "", ""],
+        ["", "", "t", "", ""],
+        ["", "", "e", "", ""],
+        ["", "", "s", "", ""],
+        ["", "", "t", "", ""],
         ["", "", "", "", ""],
         ["", "", "", "", ""]
     ]
@@ -128,16 +127,20 @@ function updateMessage(){
 /*----------------------------- Event Listeners -----------------------------*/       
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-    // console.log("HANDLE CLICK()")
-    // console.log(keyRowEls)
-//    console.log("Key Test", event.target.id)
-    displayBoard = event.target.id
-    console.log(displayBoard)
+     // console.log(keyRowEls
+    //  displayBoard = event.target.id
+    //  console.log("Key Test", event.target.id)
+
+    if(displayBoard[event.target.id] === " " || winner === true){
+        return
+    }
+    
 
     // displayBoard.textContent = "keyRowEls.event.id"
-    // console.log(displayBoard)
+    console.log(displayBoard)
 }
 // console.log("test handleClick():", handleClick())
+// handleClick()
 
 keyRowEls.forEach((key) => {
     key.addEventListener("click", handleClick)
@@ -146,7 +149,6 @@ keyRowEls.forEach((key) => {
     // b2. Have an enter key to submit the guess. render word in the current blank row
 })
 // console.log(handleClick())
-// handleClick()
     
     // d. if winner = true return out of handleClick
 
