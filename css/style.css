@@ -55,6 +55,19 @@ h1 {
     font-size: 25px;
 }
 
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DEDEDE;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.325);
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    font-size: 25px;
+}
+
 .example-row {
     display: flex;
     margin-top: -15px;
@@ -147,10 +160,19 @@ h2 {
     main {
         /* border: 3px solid black; */
         height: 100%;
-    }
+    } 
 
     h1 {
-        /* border: 3px solid goldenrod; */
+        border: 3px solid goldenrod;
+        font-size: 50px;
+        margin: 0;
+    }
+
+    #message {
+        /* border: 3px solid gold; */
+        font-size: 35px;
+        text-align: center;
+        margin: 10px 0;
     }
 
     #game-board {
@@ -163,18 +185,17 @@ h2 {
     .tile {
         width: 45px;
         height: 45px;
-        font-size: 30px;
+        font-size: 25px;
         margin: 2px;
         box-shadow: 0 3px 2px rgba(0, 0, 0, 0.466);
-
     }
 
-    .keyboard .tile {
+    .key {
         /* display: flex; */
         /* border: 3px solid purple; */
-        width: 30px;
-        height: 50px;
-        font-size: 25px;
+        width: 25px;
+        height: 45px;
+        font-size: 20px;
         border-radius: 5px;
     }
 
@@ -189,6 +210,10 @@ h2 {
     }
 
     h2 {
-        font-size: 40px;
+        font-size: 35px;
+        margin: 22px 0 0;
     } 
+    p {
+        margin: 15px 0;
+    }
 }

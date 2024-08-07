@@ -39,6 +39,7 @@ let guessWord
 const keyRowEls = document.querySelectorAll(".key-row")
 const displayRowEls = document.querySelectorAll(".display-row")
 const tileEls = document.querySelectorAll(".tile")
+const keyEls = document.querySelectorAll(".key")
 const deleteEl = document.querySelector("#delete")
 const enterEl = document.querySelector("#enter")
 const messageEl = document.querySelector("#message")
@@ -133,6 +134,8 @@ function handleClick(event){
     displayBoard = event.target.id
     console.log(displayBoard)
 
+    // displayBoard.textContent = "keyRowEls.event.id"
+    // console.log(displayBoard)
 }
 // console.log("test handleClick():", handleClick())
 
