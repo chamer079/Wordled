@@ -114,6 +114,13 @@ function updateMessage(){
         // e2. too long -> > randomWord.length
 }
 
+function placeLetter(index){
+    displayBoard[index] = currentAttempt
+}
+ // Step 6.1a: create a placeLetter function that accepts a parameter of index??? -> will probably need an interation and if/else(?)
+        // 6.1b: update displayBoard arr ar the index to that it is = to the current value of attempts
+        // 6.1c: call placeLetter () in the handleClick - pass keyIndex/event.target.id
+
 
 // Step 7. create a reset functionality
 
@@ -129,6 +136,8 @@ function handleClick(event){
     if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
+
+    placeLetter(event.target.id)
     
 }
 
@@ -141,14 +150,16 @@ keyRowEls.forEach((key) => {
 })
     
 
-    // Step 6.1a: create a currentTurn function that accepts a parameter of index??? -> will probably need an interation and if/else(?)
-    // if current turn/ row is empty then populate with current guessed word
-    //if row ! empty, move to the next turn / row    
-        // 6.1b: update board so that it is = to the current guessedWord of the turn
-        // 6.1c: call currentTurn() in handleClick
+   
+
+    // Step 6.2a: create a currentAttempt function - 
+     // if current attempt is empty then populate with current guessed word
+     //if row ! empty, move to the next turn / row    
+        // 6.2b: update board so that it is = to the current guessedWord of the turn
+        // 6.2c: call currentTurn() in handleClick
     
-    // Step 6.2a: create a checkForWinner()
-        // 6.2b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
+    // Step 6.3a: create a checkForWinner()
+        // 6.3b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
         // call checkForWinner() in handleClick
 
-    // Step 6.3: call the render() in handleClick
+    // Step 6.4: call the render() in handleClick
