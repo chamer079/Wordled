@@ -20,7 +20,10 @@ const wordBank = [
     "BLANK",
     "ACORN",
     "SNACK",
-    "APPLE"
+    "APPLE", 
+    "WHALE",
+    "PANDA",
+    "RINSE"
 ]
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -40,6 +43,9 @@ const deleteEl = document.querySelector("#delete")
 const enterEl = document.querySelector("#enter")
 const messageEl = document.querySelector("#message")
 
+// c(?). get the index for an id assigned to the target el in the HTML - assign this to a const called keyIndex
+const keyIndex = document.querySelector(".keyboard")
+
 /*-------------------------------- Functions --------------------------------*/
 // Step 4. Upon loading, the game state should be initialized, and a function should be called to render this game state
 function init(){
@@ -54,7 +60,7 @@ function init(){
     winner = false
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
-    guessWord = ""
+    guessWord = ["", "", "", "", ""]
 } 
 init()
     
@@ -74,10 +80,11 @@ function updateBoard(){
     displayBoard.forEach((row) => {
         row.forEach((tile, idx) => {
             tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
-            // tileEls[idx].textContent = "w" //<- if inputting "whale", will render "whale" 5x
+            tileEls[idx].textContent = ["w"] //<- if inputting "whale", will render "whale" 5x
+            tileEls[idx].style.color = "white"
         })
 
-        
+
         // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
     
     
@@ -118,11 +125,30 @@ function updateMessage(){
         
 /*----------------------------- Event Listeners -----------------------------*/       
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
-    // a. create a handleClick function
-    // b. set up an event listener to each square in the keyboard w/ a loop. set up event listerner to respond to 'click' & should call handleClick
-        // b1. Have a backspace key to delete letters. -> .pop
-        // b2. Have an enter key to submit the guess. render word in the current blank row
-    // c(?). get the index for an id assigned to the target el in the HTML - assign this to a const called keyIndex
+function handleClick(event){
+    // console.log("HANDLE CLICK()")
+    console.log(keyRowEls)
+    
+    if(displayBoard[event.target.id] === "" || winner === true){
+        return
+    }
+
+}
+handleClick()
+// console.log("test handleClick():", handleClick())
+
+// b. set up an event listener to each square in the keyboard w/ a loop. set up event listerner to respond to 'click' & should call handleClick
+keyRowEls.forEach((key) => {
+    
+    key.addEventListener("click", handleClick)
+
+    // b1. Have a backspace key to delete letters. -> .pop
+   
+   
+    // b2. Have an enter key to submit the guess. render word in the current blank row
+})
+
+    
     // d. if winner = true return out of handleClick
 
     // Step 6.1a: create a currentTurn function that accepts a parameter of index??? -> will probably need an interation and if/else(?)
