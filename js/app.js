@@ -31,9 +31,8 @@ const wordBank = [
 let displayBoard
 let winner
 let randomWord
-let currentWord //<- need to refer to current random word for round?
+let currentWord //<- need to refer to current random word for
 let guessedWord
-let attempts
 
 /*------------------------ Cached Element References ------------------------*/
 // Step 3. Store cache element refernces. 
@@ -63,7 +62,6 @@ function init(){
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
     guessedWord = ["", "", "", "", ""]
-    attempts = 6
 } 
 init()
     
@@ -101,11 +99,8 @@ function updateBoard(){
 // console.log("test updateBoard()", updateBoard())
 
 
-function updateMessage(){
-    // console.log("UPDATE MESSAGE()")
-    // messageEl.textContent = "TEST"
-   
-    // f. render a message that if the player won or lost -> ?? would it be better to place this message in checkForWinner()??
+function updateMessage(){  
+    // would it be better to place this message in checkForWinner()??
     if(winner === false){
         messageEl.textContent = "Better luck next time. Want to try again?"
         // console.log("winner = false")
@@ -118,7 +113,6 @@ function updateMessage(){
         // e1. too short -> < randomWord.length 
         // e2. too long -> > randomWord.length
 }
-// console.log("updateMessage test: updateMessage()")
 
 
 // Step 7. create a reset functionality
@@ -128,22 +122,16 @@ function updateMessage(){
 /*----------------------------- Event Listeners -----------------------------*/       
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-     // console.log(keyRowEls
-    //  displayBoard = event.target.id
-    //  console.log("Key Test", event.target.id)
+     console.log("Key Test", event.target.id)
+     console.log(displayBoard)
 
-    tileEls.textContent = event.click
-
+    // d. if winner = true return out of handleClick
     if(displayBoard[event.target.id] === " " || winner === true){
         return
-    }
+    }   
     
-    render()
-    // displayBoard.textContent = "keyRowEls.event.id"
-    console.log("test", tileEls)
 }
-// console.log("test handleClick():", handleClick())
-// handleClick()
+
 
 keyRowEls.forEach((key) => {
     key.addEventListener("click", handleClick)
@@ -151,9 +139,7 @@ keyRowEls.forEach((key) => {
     // b1. Have a backspace key to delete letters. -> .pop
     // b2. Have an enter key to submit the guess. render word in the current blank row
 })
-// console.log(handleClick())
     
-    // d. if winner = true return out of handleClick
 
     // Step 6.1a: create a currentTurn function that accepts a parameter of index??? -> will probably need an interation and if/else(?)
     // if current turn/ row is empty then populate with current guessed word
