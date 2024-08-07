@@ -31,7 +31,9 @@ const wordBank = [
 let displayBoard
 let winner
 let randomWord
-let guessWord
+let currentWord //<- need to refer to current random word for round?
+let guessedWord
+let attempts
 
 /*------------------------ Cached Element References ------------------------*/
 // Step 3. Store cache element refernces. 
@@ -60,7 +62,8 @@ function init(){
     winner = false
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
-    guessWord = ["", "", "", "", ""]
+    guessedWord = ["", "", "", "", ""]
+    attempts = 6
 } 
 init()
     
@@ -80,7 +83,7 @@ function updateBoard(){
     displayBoard.forEach((row) => {
         row.forEach((tile, idx) => {
             tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
-            // tileEls[idx].textContent = ["w"] //<- if inputting "whale", will render "whale" 5x
+            tileEls[idx].textContent = [""] //<- if inputting "whale", will render "whale" 5x
             tileEls[idx].style.color = "white"
            
         })
@@ -94,11 +97,9 @@ function updateBoard(){
             // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
             // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
     })
-
-
-
 }
 // console.log("test updateBoard()", updateBoard())
+
 
 function updateMessage(){
     // console.log("UPDATE MESSAGE()")
@@ -131,13 +132,15 @@ function handleClick(event){
     //  displayBoard = event.target.id
     //  console.log("Key Test", event.target.id)
 
+    tileEls.textContent = event.click
+
     if(displayBoard[event.target.id] === " " || winner === true){
         return
     }
     
-
+    render()
     // displayBoard.textContent = "keyRowEls.event.id"
-    console.log(displayBoard)
+    console.log("test", tileEls)
 }
 // console.log("test handleClick():", handleClick())
 // handleClick()
