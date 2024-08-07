@@ -80,8 +80,9 @@ function updateBoard(){
     displayBoard.forEach((row) => {
         row.forEach((tile, idx) => {
             tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
-            tileEls[idx].textContent = ["w"] //<- if inputting "whale", will render "whale" 5x
+            // tileEls[idx].textContent = ["w"] //<- if inputting "whale", will render "whale" 5x
             tileEls[idx].style.color = "white"
+           
         })
 
 
@@ -127,27 +128,22 @@ function updateMessage(){
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
     // console.log("HANDLE CLICK()")
-    console.log(keyRowEls)
-    
-    if(displayBoard[event.target.id] === "" || winner === true){
-        return
-    }
+    // console.log(keyRowEls)
+//    console.log("Key Test", event.target.id)
+    displayBoard = event.target.id
+    console.log(displayBoard)
 
 }
-handleClick()
 // console.log("test handleClick():", handleClick())
 
-// b. set up an event listener to each square in the keyboard w/ a loop. set up event listerner to respond to 'click' & should call handleClick
 keyRowEls.forEach((key) => {
-    
     key.addEventListener("click", handleClick)
-
+    
     // b1. Have a backspace key to delete letters. -> .pop
-   
-   
     // b2. Have an enter key to submit the guess. render word in the current blank row
 })
-
+// console.log(handleClick())
+// handleClick()
     
     // d. if winner = true return out of handleClick
 
