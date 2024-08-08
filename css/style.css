@@ -176,23 +176,24 @@ h2 {
     } 
 
     h1 {
-        border: 3px solid goldenrod;
+        /* border: 3px solid goldenrod; */
         font-size: 50px;
         margin: 0;
     }
 
     #message {
         /* border: 3px solid gold; */
-        font-size: 35px;
+        font-size: 30px;
         text-align: center;
         margin: 10px 0;
     }
 
     #game-board {
         /* border: 3px solid red; */
-        height: 550px;
         display: flex;
-        gap: 15px;
+        justify-content: space-evenly;
+        /* gap: 10px; */
+        height: 600px;
     }
 
     .tile {
@@ -204,7 +205,7 @@ h2 {
     }
 
     .key {
-        /* display: flex; */
+        display: flex;
         /* border: 3px solid purple; */
         width: 25px;
         height: 45px;
@@ -222,11 +223,21 @@ h2 {
         width: 65px;
     }
 
+    button {
+        border-radius: 5px;
+    }
+
     h2 {
         font-size: 35px;
         margin: 22px 0 0;
     } 
+    #instructions {
+        /* border: 3px solid saddlebrown; */
+        display: flex;
+        height: 800px;
+    }
+
     p {
-        margin: 15px 0;
+        font-size: 20px;
     }
 }

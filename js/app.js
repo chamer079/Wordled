@@ -33,6 +33,7 @@ let winner
 let randomWord
 let currentWord //<- need to refer to current random word for
 let guessedWord
+let attempts
 
 /*------------------------ Cached Element References ------------------------*/
 // Step 3. Store cache element refernces. 
@@ -62,6 +63,7 @@ function init(){
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
     guessedWord = ["", "", "", "", ""]
+    attempts = 6
 } 
 init()
     
@@ -93,13 +95,13 @@ function updateBoard(){
     // ** displayBoard Alternate **
     tileEls.forEach((tile, idx) => {
         tileEls[idx].style.background = "red"
+        // console.log("tileEls[idx]", tileEls[idx])
     })
 
     // *** keyboard ***
     keyEls.forEach((tile, idx) => {
-        // console.log("keyRowEls", keyRowEls)
         keyEls[idx].style.background = "red"
-        console.log("keyEls[idx", keyEls[idx])
+        // console.log("keyEls[idx", keyEls[idx])
     })
     
 
@@ -128,22 +130,30 @@ function updateMessage(){
         // e2. too long -> > randomWord.length
 }
 
-// function placeLetter(index){  // will probably need an interation and if/else(?)
-//     displayBoard[index] = currentAttempt  // 6.1b: update displayBoard arr ar the index to that it is = to the current value of attempts
-// }
+function placeLetter(index){  // will probably need an interation and if/else(?)
+    displayBoard[index] = currentAttempt  // 6.1b: update displayBoard arr ar the index to that it is = to the current value of attempts
+}
         
+// **** Maybe combine both currentAttempt() & checkForWinner -> both () will more than likely need to iterate through each row to see if there are any blank spaces? -> practicing DRY codeing? Would it be better to compartmentalize into different functions? **//
+function currentAttempt(){
+    // if current attempt is empty then populate with current guessed word
+    displayBoard.forEach((row, idx) => {
+      if(winner === false){
+        if(row[idx] === "" && attempts <= 6){
+            //
+            attempts--
 
-// function currentAttempt(){
-//     // if current attempt is empty then populate with current guessed word
-//     displayBoard.forEach((row) => {
-//        if(row ===)
-//     })
+        }
+      } else {
+        return
+      }
+    })
 
-//     //if row ! empty, move to the next turn / row    
-//        // 6.2b: update board so that it is = to the current guessedWord of the turn
-//        // 6.2c: call currentTurn() in handleClick
+    //if row ! empty, move to the next turn / row    
+       // 6.2b: update board so that it is = to the current guessedWord of the turn
+       // 6.2c: call currentTurn() in handleClick
 
-// }
+}
 
 
 
@@ -162,7 +172,7 @@ function handleClick(event){
         return
     }   
 
-    // placeLetter(event.target.id)
+    placeLetter(event.target.id)
     
 }
 
