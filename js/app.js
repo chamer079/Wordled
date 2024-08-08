@@ -77,41 +77,17 @@ render()
 
 function updateBoard(){
     // console.log("UPDATE BOARD()")
-    // displayRowEls.forEach((tile, idx) => {
-    //     console.log(tile[idx])
-    //     console.log("TILE", tile)
-    //     console.log(displayRowEls)
-    //    tileEls[idx].style.background = "red"
-    // })
-
-
     // *** displayBoard ***
-    // displayBoard.forEach((row) => {
-    //     row.forEach((tile, idx) => {
-    //     // console.log(row[idx])
-    //     console.log("TILE", row)
-    //     // console.log(displayBoard)
-    //         tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
-    //         tileEls[idx].textContent = [""] //<- if inputting "whale", will render "whale" 5x
-    //         tileEls[idx].style.color = "white"
-           
-           
-    //     })
-    //     console.log(tileEls.length)
-    // })
 
+    // *** 5 tiles changed color ***
+    displayBoard.forEach((row, rowIdx) => {
+        row.forEach((tile, tileIdx) => {
+            const tileIndex = rowIdx * displayBoard[0].length + tileIdx;
+            tileEls[tileIndex].style.background = "red";
+            console.log(tileEls[tileIndex]);
+        });
+    });
 
-
-    displayBoard.forEach((row, idx) => {
-        tileEls[idx].style.background = "red"
-        console.log(displayRowEls[idx])
-
-        // row.forEach((tile, idx) => {
-        //     // tileEls[idx].style.background = "gold"
-        //     // console.log(tileEls[idx])
-    
-        // })
-    })
 
         // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
     
@@ -121,7 +97,6 @@ function updateBoard(){
             // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
             // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
 }
-// console.log("test updateBoard()", updateBoard())
 
 
 function updateMessage(){  
@@ -146,8 +121,7 @@ function updateMessage(){
 
 // function currentAttempt(){
 //     // if current attempt is empty then populate with current guessed word
-//  instead of displayBoard for iteration -> displayRowEls?   
-    //displayBoard.forEach((row) => {
+//     displayBoard.forEach((row) => {
 //        if(row ===)
 //     })
 
@@ -166,8 +140,8 @@ function updateMessage(){
 /*----------------------------- Event Listeners -----------------------------*/       
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-    //  console.log("Key Test", event.target.id)
-    //  console.log(displayBoard)
+     console.log("Key Test", event.target.id)
+     console.log(displayBoard)
 
     // d. if winner = true return out of handleClick
     if(displayBoard[event.target.id] === " " || winner === true){
