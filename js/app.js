@@ -77,15 +77,41 @@ render()
 
 function updateBoard(){
     // console.log("UPDATE BOARD()")
-    // *** displayBoard ***
-    displayBoard.forEach((row) => {
-        row.forEach((tile, idx) => {
-            tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
-            tileEls[idx].textContent = [""] //<- if inputting "whale", will render "whale" 5x
-            tileEls[idx].style.color = "white"
-           
-        })
+    // displayRowEls.forEach((tile, idx) => {
+    //     console.log(tile[idx])
+    //     console.log("TILE", tile)
+    //     console.log(displayRowEls)
+    //    tileEls[idx].style.background = "red"
+    // })
 
+
+    // *** displayBoard ***
+    // displayBoard.forEach((row) => {
+    //     row.forEach((tile, idx) => {
+    //     // console.log(row[idx])
+    //     console.log("TILE", row)
+    //     // console.log(displayBoard)
+    //         tileEls[idx].style.background = "gold"  //<- only coloring 1 row.
+    //         tileEls[idx].textContent = [""] //<- if inputting "whale", will render "whale" 5x
+    //         tileEls[idx].style.color = "white"
+           
+           
+    //     })
+    //     console.log(tileEls.length)
+    // })
+
+
+
+    displayBoard.forEach((row, idx) => {
+        tileEls[idx].style.background = "red"
+        console.log(displayRowEls[idx])
+
+        // row.forEach((tile, idx) => {
+        //     // tileEls[idx].style.background = "gold"
+        //     // console.log(tileEls[idx])
+    
+        // })
+    })
 
         // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
     
@@ -94,7 +120,6 @@ function updateBoard(){
             // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
             // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
             // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
-    })
 }
 // console.log("test updateBoard()", updateBoard())
 
@@ -114,12 +139,24 @@ function updateMessage(){
         // e2. too long -> > randomWord.length
 }
 
-function placeLetter(index){
-    displayBoard[index] = currentAttempt
-}
- // Step 6.1a: create a placeLetter function that accepts a parameter of index??? -> will probably need an interation and if/else(?)
-        // 6.1b: update displayBoard arr ar the index to that it is = to the current value of attempts
-        // 6.1c: call placeLetter () in the handleClick - pass keyIndex/event.target.id
+// function placeLetter(index){  // will probably need an interation and if/else(?)
+//     displayBoard[index] = currentAttempt  // 6.1b: update displayBoard arr ar the index to that it is = to the current value of attempts
+// }
+        
+
+// function currentAttempt(){
+//     // if current attempt is empty then populate with current guessed word
+//  instead of displayBoard for iteration -> displayRowEls?   
+    //displayBoard.forEach((row) => {
+//        if(row ===)
+//     })
+
+//     //if row ! empty, move to the next turn / row    
+//        // 6.2b: update board so that it is = to the current guessedWord of the turn
+//        // 6.2c: call currentTurn() in handleClick
+
+// }
+
 
 
 // Step 7. create a reset functionality
@@ -129,15 +166,15 @@ function placeLetter(index){
 /*----------------------------- Event Listeners -----------------------------*/       
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-     console.log("Key Test", event.target.id)
-     console.log(displayBoard)
+    //  console.log("Key Test", event.target.id)
+    //  console.log(displayBoard)
 
     // d. if winner = true return out of handleClick
     if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
 
-    placeLetter(event.target.id)
+    // placeLetter(event.target.id)
     
 }
 
