@@ -1,5 +1,4 @@
 /*-------------------------------- Constants --------------------------------*/
-// Step1. Create an wordBank array of a minimum of 13 words.
 const wordBank = [
     "BLAST",
     "PEACH",
@@ -27,7 +26,6 @@ const wordBank = [
 ]
 
 /*---------------------------- Variables (state) ----------------------------*/
-// Step 2. Define required variables to track the state of the game. 
 let displayBoard
 let winner
 let randomWord
@@ -36,7 +34,6 @@ let guessedWord
 let attempts
 
 /*------------------------ Cached Element References ------------------------*/
-// Step 3. Store cache element refernces. 
 const keyRowEls = document.querySelectorAll(".key-row")
 const displayRowEls = document.querySelectorAll(".display-row")
 const tileEls = document.querySelectorAll(".tile")
@@ -44,14 +41,14 @@ const keyEls = document.querySelectorAll(".key")
 const deleteEl = document.querySelector("#delete")
 const enterEl = document.querySelector("#enter")
 const messageEl = document.querySelector("#message")
+const resetBtnEl = document.querySelector("#resetBtn")
 
 // c(?). get the index for an id assigned to the target el in the HTML - assign this to a const called keyIndex
 const keyboard = document.querySelectorAll(".keyboard")
 
 /*-------------------------------- Functions --------------------------------*/
-// Step 4. Upon loading, the game state should be initialized, and a function should be called to render this game state
 function init(){
-    displayBoard = [   // <- realized the need for neseted arr due to words.  is correct?
+    displayBoard = [  
         ["", "", "t", "", ""],
         ["", "", "e", "", ""],
         ["", "", "s", "", ""],
@@ -64,18 +61,19 @@ function init(){
     console.log("randomWord test:", randomWord)
     guessedWord = ["", "", "", "", ""]
     attempts = 6
+
+    resetBtnEl.addEventListener("click", init)
+
+    render()
 } 
 init()
     
-// Step 5. The state of the game should be rendered to the user.
+
 function render(){
-    // console.log("HI RENDER()!")
     updateBoard()
     updateMessage()
 }
-render()
 
-// console.log("test render()", render())
 
 function updateBoard(){
     // *** displayBoard ***  
@@ -139,51 +137,49 @@ function placeLetter(index){  // will probably need an interation and if/else(?)
         
 // **** Maybe combine both currentTurn() & checkForWinner -> both () will more than likely need to iterate through each row to see if there are any blank spaces? -> practicing DRY codeing? Would it be better to compartmentalize into different functions? **//
 
-function currentTurn(){
-    // if current turn is empty then populate with current guessed word
-    if(winner === false && attempts !== 0){
-        displayBoard.forEach((row, idx) => {
-            if(row[idx] === ""){
-                displayRowEls[idx].textContent = guessedWord
+// function currentTurn(){
+//     // if current turn is empty then populate with current guessed word
+//     if(winner === false && attempts !== 0){
+//         displayBoard.forEach((row, idx) => {
+//             if(row[idx] === ""){
+//                 displayRowEls[idx].textContent = guessedWord
 
-                attempts--
+//                 attempts--
 
-                console.log("guessedWord Test", guessedWord)
-            } else{
-                return
-            }
-        })
-    }
+//                 console.log("guessedWord Test", guessedWord)
+//             } else{
+//                 return
+//             }
+//         })
+//     }
 
 
-    //if row ! empty, move to the next turn / row    
-       // 6.2b: update board so that it is = to the current guessedWord of the turn
-       // 6.2c: call currentTurn() in handleClick
+//     //if row ! empty, move to the next turn / row    
+//        // 6.2b: update board so that it is = to the current guessedWord of the turn
+//        // 6.2c: call currentTurn() in handleClick
 
-}
+// }
 
 // Step 6.2a: create a currentAttempt function - 
  // if current attempt is empty then populate with current guessed word
  //if row ! empty, move to the next turn / row    
 
-
-// Step 7. create a reset functionality
-
-
         
 /*----------------------------- Event Listeners -----------------------------*/       
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-     console.log("Key Test", event.target.id)
-     console.log(displayBoard)
-
+    console.log(displayBoard)
+    
     // d. if winner = true return out of handleClick
     if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
+    console.log("Key Test", event.target.id)
     
     placeLetter(event.target.id)
-    currentTurn()
+    // currentTurn()
+
+    render()
     
 }
 
@@ -200,5 +196,3 @@ keyRowEls.forEach((key) => {
     // Step 6.3a: create a checkForWinner()
         // 6.3b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
         // call checkForWinner() in handleClick
-
-    // Step 6.4: call the render() in handleClick
