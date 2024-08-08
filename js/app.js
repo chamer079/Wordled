@@ -61,7 +61,7 @@ function init(){
     ]
     winner = false
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
-    console.log("randomWord test:", randomWord)
+    // console.log("randomWord test:", randomWord)
     guessedWord = ["", "", "", "", ""]
     attempts = 6
 } 
@@ -118,13 +118,18 @@ function updateBoard(){
 function updateMessage(){  
     // would it be better to place this message in checkForWinner()??
     if(winner === false){
-        messageEl.textContent = "Better luck next time. Want to try again?"
+        messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
         // console.log("winner = false")
     } else{
         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
         // console.log("winner = true")
     }
     
+    if (guessedWord.length < 5){
+        messageEl.textContent = "The word is too short."
+    }   else if (guessedWord.length > 5){
+        messageEl.textContent = "The word is too long."
+    }
     // e. render a message if the word entered is: 
         // e1. too short -> < randomWord.length 
         // e2. too long -> > randomWord.length
@@ -141,6 +146,7 @@ function currentAttempt(){
       if(winner === false){
         if(row[idx] === "" && attempts <= 6){
             //
+            
             attempts--
 
         }
@@ -155,6 +161,9 @@ function currentAttempt(){
 
 }
 
+// Step 6.2a: create a currentAttempt function - 
+ // if current attempt is empty then populate with current guessed word
+ //if row ! empty, move to the next turn / row    
 
 
 // Step 7. create a reset functionality
@@ -171,7 +180,7 @@ function handleClick(event){
     if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
-
+    
     placeLetter(event.target.id)
     
 }
@@ -181,18 +190,11 @@ keyRowEls.forEach((key) => {
     key.addEventListener("click", handleClick)
     
     // b1. Have a backspace key to delete letters. -> .pop
+
+    
     // b2. Have an enter key to submit the guess. render word in the current blank row
-})
-    
-
-   
-
-    // Step 6.2a: create a currentAttempt function - 
-     // if current attempt is empty then populate with current guessed word
-     //if row ! empty, move to the next turn / row    
-        // 6.2b: update board so that it is = to the current guessedWord of the turn
-        // 6.2c: call currentTurn() in handleClick
-    
+}) 
+ 
     // Step 6.3a: create a checkForWinner()
         // 6.3b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
         // call checkForWinner() in handleClick
