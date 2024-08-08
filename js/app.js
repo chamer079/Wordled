@@ -76,18 +76,24 @@ render()
 // console.log("test render()", render())
 
 function updateBoard(){
-    // console.log("UPDATE BOARD()")
-    // *** displayBoard ***  <-credit Megan for this code block!!!
-    // const tileIndex = taking the rowIdx multiplying 
-    displayBoard.forEach((row, rowIdx) => {
-        row.forEach((tile, tileIdx) => {
-            const tileIndex = rowIdx * displayBoard[0].length + tileIdx;
+    // *** displayBoard ***  
+    // // *credit Megan for this code block!!!
+    // // const tileIndex = taking the rowIdx multiplying 
+    // displayBoard.forEach((row, rowIdx) => {
+    //     row.forEach((tile, tileIdx) => {
+    //         const tileIndex = rowIdx * displayBoard[0].length + tileIdx;
             
-            tileEls[tileIndex].style.background = "red";
-            // console.log(tileEls[tileIndex]);
-            console.log(displayBoard[0].length)
-        });
-    });
+    //         tileEls[tileIndex].style.background = "red";
+    //         // console.log(tileEls[tileIndex]);
+    //         console.log(displayBoard[0].length)
+    //     });
+    // });
+
+    
+    // ** displayBoard Alternate **
+    tileEls.forEach((tile, idx) => {
+        tileEls[idx].style.background = "red"
+    })
 
     // *** keyboard ***
     keyEls.forEach((tile, idx) => {
