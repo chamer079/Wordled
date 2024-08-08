@@ -90,12 +90,11 @@ function updateBoard(){
     });
 
     // *** keyboard ***
-    keyRowEls.forEach((tile, tileIdx) => {
-        console.log(keyRowEls)
-            // const tileIndex = tileIdx * keyRowEls[0].length 
-
-            keyEls[tileIdx].style.background = "red"
-        })
+    keyEls.forEach((tile, idx) => {
+        // console.log("keyRowEls", keyRowEls)
+        keyEls[idx].style.background = "red"
+        console.log("keyEls[idx", keyEls[idx])
+    })
     
 
     // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
