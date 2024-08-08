@@ -45,7 +45,7 @@ const enterEl = document.querySelector("#enter")
 const messageEl = document.querySelector("#message")
 
 // c(?). get the index for an id assigned to the target el in the HTML - assign this to a const called keyIndex
-const keyIndex = document.querySelector(".keyboard")
+const keyboard = document.querySelectorAll(".keyboard")
 
 /*-------------------------------- Functions --------------------------------*/
 // Step 4. Upon loading, the game state should be initialized, and a function should be called to render this game state
@@ -77,19 +77,28 @@ render()
 
 function updateBoard(){
     // console.log("UPDATE BOARD()")
-    // *** displayBoard ***
-
-    // *** 5 tiles changed color ***
+    // *** displayBoard ***  <-credit Megan for this code block!!!
+    // const tileIndex = taking the rowIdx multiplying 
     displayBoard.forEach((row, rowIdx) => {
         row.forEach((tile, tileIdx) => {
             const tileIndex = rowIdx * displayBoard[0].length + tileIdx;
+            
             tileEls[tileIndex].style.background = "red";
-            console.log(tileEls[tileIndex]);
+            // console.log(tileEls[tileIndex]);
+            console.log(displayBoard[0].length)
         });
     });
 
+    // *** keyboard ***
+    keyRowEls.forEach((tile, tileIdx) => {
+        console.log(keyRowEls)
+            // const tileIndex = tileIdx * keyRowEls[0].length 
 
-        // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
+            keyEls[tileIdx].style.background = "red"
+        })
+    
+
+    // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
     
     
     
