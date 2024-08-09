@@ -60,7 +60,7 @@ function init(){
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
     guessedWord = ""
-    attempts = 0
+    attempts = 6
 
     resetBtnEl.addEventListener("click", init)
 
@@ -73,6 +73,7 @@ function render(){
     updateBoard()
     updateMessage()
 }
+render()
 
 
 function updateBoard(){
@@ -122,71 +123,52 @@ function updateMessage(){
         // console.log("winner = true")
     }
     
-    // if (guessedWord.length < 5){
-    //     messageEl.textContent = "The word is too short."
-    // }   else if (guessedWord.length > 5){
-    //     messageEl.textContent = "The word is too long."
-    // }
+    if (guessedWord.length < 5){
+        messageEl.textContent = "The word is too short."
+    }   else if (guessedWord.length > 5){
+        messageEl.textContent = "The word is too long."
+    }
 }
 
-function placeLetter(index){  // will probably need an interation and if/else(?)
-    displayBoard[index] = attempts  
-
-    // console.log("currentAttempt test", attempts)
-}
-        
 // **** Maybe combine both currentTurn() & checkForWinner -> both () will more than likely need to iterate through each row to see if there are any blank spaces? -> practicing DRY codeing? Would it be better to compartmentalize into different functions? **//
 
-
-
-
-    //if row ! empty, move to the next turn / row    
-       // 6.2b: update board so that it is = to the current guessedWord of the turn
-       // 6.2c: call currentTurn() in handleClick
-
-
-
+      
+    
 // Step 6.2a: create a currentAttempt function - 
- // if current attempt is empty then populate with current guessed word
- //if row ! empty, move to the next turn / row    
+  // if current attempt is empty then populate with current guessed word
+  //if row ! empty, move to the next turn / row    
+    // 6.2b: update board so that it is = to the current guessedWord of the turn
+    // 6.2c: call currentTurn() in handleClick
+    
 
         
 /*----------------------------- Event Listeners -----------------------------*/       
-// Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
+//Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-    
-    // d. if winner = true return out of handleClick
-    if(displayBoard[event.target.id] === " " || winner === true){
+     if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
+    
     console.log("Key Test", event.target.id)
-    console.log("board test", event.target)
     
     // *** Give credit to Tamerlan Mustafayev ***
     let currentIndex = 0
     tileEls.forEach(tile => {
-        if (tile.textContent.length == 0 ) {
+        if (tile.textContent.length === 0  ) {
             tileEls[currentIndex].textContent = event.target.textContent
+            
         } else {
             currentIndex++
         }
-    })
-   
+    })   
 
-console.log(displayBoard)
-    
-  
-    placeLetter(event.target.id)
-    // // currentTurn()
-    
-    // render()
-    
+console.log(displayBoard)      
 }
+
 
 keyEls.forEach((key, idx) => {
     key.addEventListener("click", handleClick)
 }) 
- 
     // Step 6.3a: create a checkForWinner()
         // 6.3b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
         // call checkForWinner() in handleClick
