@@ -49,18 +49,18 @@ const keyboard = document.querySelectorAll(".keyboard")
 /*-------------------------------- Functions --------------------------------*/
 function init(){
     displayBoard = [  
-        ["", "", "t", "", ""],
-        ["", "", "e", "", ""],
-        ["", "", "s", "", ""],
-        ["", "", "t", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
         ["", "", "", "", ""],
         ["", "", "", "", ""]
     ]
     winner = false
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
-    guessedWord = ["", "", "", "", ""]
-    attempts = 6
+    guessedWord = ""
+    attempts = 0
 
     resetBtnEl.addEventListener("click", init)
 
@@ -137,28 +137,14 @@ function placeLetter(index){  // will probably need an interation and if/else(?)
         
 // **** Maybe combine both currentTurn() & checkForWinner -> both () will more than likely need to iterate through each row to see if there are any blank spaces? -> practicing DRY codeing? Would it be better to compartmentalize into different functions? **//
 
-// function currentTurn(){
-//     // if current turn is empty then populate with current guessed word
-//     if(winner === false && attempts !== 0){
-//         displayBoard.forEach((row, idx) => {
-//             if(row[idx] === ""){
-//                 displayRowEls[idx].textContent = guessedWord
-
-//                 attempts--
-
-//                 console.log("guessedWord Test", guessedWord)
-//             } else{
-//                 return
-//             }
-//         })
-//     }
 
 
-//     //if row ! empty, move to the next turn / row    
-//        // 6.2b: update board so that it is = to the current guessedWord of the turn
-//        // 6.2c: call currentTurn() in handleClick
 
-// }
+    //if row ! empty, move to the next turn / row    
+       // 6.2b: update board so that it is = to the current guessedWord of the turn
+       // 6.2c: call currentTurn() in handleClick
+
+
 
 // Step 6.2a: create a currentAttempt function - 
  // if current attempt is empty then populate with current guessed word
@@ -175,22 +161,28 @@ function handleClick(event){
         return
     }   
     console.log("Key Test", event.target.id)
+    console.log("board test", event.target)
     
-    placeLetter(event.target.id)
-    // currentTurn()
+    tileEls.forEach((tile) => {
+        tileEls[0].textContent = event.target.textContent
 
-    render()
+        
+    
+    })
+    // placeLetter(event.target.id)
+    // // currentTurn()
+    
+    // render()
     
 }
 
 
-keyRowEls.forEach((key) => {
+
+
+keyEls.forEach((key, idx) => {
     key.addEventListener("click", handleClick)
     
-    // b1. Have a backspace key to delete letters. -> .pop
-
     
-    // b2. Have an enter key to submit the guess. render word in the current blank row
 }) 
  
     // Step 6.3a: create a checkForWinner()
