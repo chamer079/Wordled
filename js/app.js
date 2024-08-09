@@ -122,11 +122,11 @@ function updateMessage(){
         // console.log("winner = true")
     }
     
-    if (guessedWord.length < 5){
-        messageEl.textContent = "The word is too short."
-    }   else if (guessedWord.length > 5){
-        messageEl.textContent = "The word is too long."
-    }
+    // if (guessedWord.length < 5){
+    //     messageEl.textContent = "The word is too short."
+    // }   else if (guessedWord.length > 5){
+    //     messageEl.textContent = "The word is too long."
+    // }
 }
 
 function placeLetter(index){  // will probably need an interation and if/else(?)
@@ -154,35 +154,38 @@ function placeLetter(index){  // will probably need an interation and if/else(?)
 /*----------------------------- Event Listeners -----------------------------*/       
 // Step 6. Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-    console.log(displayBoard)
     
     // d. if winner = true return out of handleClick
     if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
     console.log("Key Test", event.target.id)
-    console.log("board test", event.target)
+    // console.log("board test", event.target)
     
-    tileEls.forEach((tile) => {
-        tileEls[0].textContent = event.target.textContent
+    
+    tileEls.forEach((tile, idx) => {
+       for(let i = 0; i <= 5; i++){
 
-        
-    
+           tileEls[i].textContent = event.target.textContent
+           displayBoard.push(event.target.textContent)
+       }
+       
     })
-    // placeLetter(event.target.id)
+    
+        console.log(displayBoard)
+    
+    // tileEls.forEach((tile) => {
+    //     tileEls[0].textContent = event.target.textContent     
+    // })
+    placeLetter(event.target.id)
     // // currentTurn()
     
     // render()
     
 }
 
-
-
-
 keyEls.forEach((key, idx) => {
     key.addEventListener("click", handleClick)
-    
-    
 }) 
  
     // Step 6.3a: create a checkForWinner()
