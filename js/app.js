@@ -160,23 +160,22 @@ function handleClick(event){
         return
     }   
     console.log("Key Test", event.target.id)
-    // console.log("board test", event.target)
+    console.log("board test", event.target)
     
-    
-    tileEls.forEach((tile, idx) => {
-       for(let i = 0; i <= 5; i++){
-
-           tileEls[i].textContent = event.target.textContent
-           displayBoard.push(event.target.textContent)
-       }
-       
+    // *** Give credit to Tamerlan Mustafayev ***
+    let currentIndex = 0
+    tileEls.forEach(tile => {
+        if (tile.textContent.length == 0 ) {
+            tileEls[currentIndex].textContent = event.target.textContent
+        } else {
+            currentIndex++
+        }
     })
+   
+
+console.log(displayBoard)
     
-        console.log(displayBoard)
-    
-    // tileEls.forEach((tile) => {
-    //     tileEls[0].textContent = event.target.textContent     
-    // })
+  
     placeLetter(event.target.id)
     // // currentTurn()
     
