@@ -110,6 +110,8 @@ function updateMessage(){
         // console.log("winner = false")
     } else if(winner === false && attempts !== 0 && attempts <= 6){
         messageEl.textContent = `You have ${attempts} turns remaining.`
+
+       
     } else{
         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
         // console.log("winner = true")
@@ -135,47 +137,56 @@ function updateMessage(){
                 // is not a word
         //  b) the attempts count will decrease by 1  
         // reset guessedWord for the next attempt
-    // 2) Have a functional reset button to restart the game one the game is over - have a corresponding message for the associated game result
-   
-    
-    
+    // 2) Have a functional reset button to restart the game one the game is over - have a corresponding message for the associated game result  
 
-        
-/*----------------------------- Event Listeners -----------------------------*/       
-//Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
+
 function handleClick(event){
     let letter = event.target.textContent
-
+    
     if(currentCol < 5){
         tileEls[currentRow * 5 + currentCol].textContent = letter
         displayBoard[currentRow][currentCol] = letter
         currentCol++
     }
-console.log(displayBoard, letter)
-
-//            if(displayBoard[event.target.id] === " " || winner === true){
-//         return
-//     }   
-//     console.log("Key Test", event.target.id)
+    console.log(displayBoard, letter)
     
-//     // *** Give credit to Tamerlan Mustafayev ***
-//     let currentIndex = 0
-//     tileEls.forEach(tile => {
-//         if (tile.textContent.length === 0  ) {
-//             tileEls[currentIndex].textContent = event.target.textContent
-            
-//         } else {
-//             currentIndex++
-//         }
-//     })   
-
-// console.log(displayBoard)      
+//            if(displayBoard[event.target.id] === " " || winner === true){
+    //         return
+    //     }   
+    //     console.log("Key Test", event.target.id)
+        
+    //     // *** Give credit to Tamerlan Mustafayev ***
+    //     let currentIndex = 0
+    //     tileEls.forEach(tile => {
+    //         if (tile.textContent.length === 0  ) {
+    //             tileEls[currentIndex].textContent = event.target.textContent
+                
+    //         } else {
+    //             currentIndex++
+    //         }
+    //     })   
+    
+    // console.log(displayBoard)      
 }
+
+function handleEnter(){
+    if(guessedWord.length === 5 || winner === true){
+        return
+    }
+
+  
+}
+
+
+        
+/*----------------------------- Event Listeners -----------------------------*/       
+//Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 
 
 keyEls.forEach((key, idx) => {
     key.addEventListener("click", handleClick)
 }) 
+enterEl.addEventListener("click", handleEnter)
 
     // Step 6.3a: create a checkForWinner()
         // 6.3b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
