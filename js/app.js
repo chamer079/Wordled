@@ -29,22 +29,22 @@ const wordBank = [
 let displayBoard
 let winner
 let randomWord
-let currentWord //<- need to refer to current random word for
 let guessedWord
+let currentRow
 let attempts
 
 /*------------------------ Cached Element References ------------------------*/
-const keyRowEls = document.querySelectorAll(".key-row")
 const displayRowEls = document.querySelectorAll(".display-row")
 const tileEls = document.querySelectorAll(".tile")
+const messageEl = document.querySelector("#message")
+const resetBtnEl = document.querySelector("#resetBtn")
+const keyRowEls = document.querySelectorAll(".key-row")
 const keyEls = document.querySelectorAll(".key")
 const deleteEl = document.querySelector("#delete")
 const enterEl = document.querySelector("#enter")
-const messageEl = document.querySelector("#message")
-const resetBtnEl = document.querySelector("#resetBtn")
 
-// c(?). get the index for an id assigned to the target el in the HTML - assign this to a const called keyIndex
-const keyboard = document.querySelectorAll(".keyboard")
+// // c(?). get the index for an id assigned to the target el in the HTML - assign this to a const called keyIndex
+// const keyboard = document.querySelectorAll(".keyboard")
 
 /*-------------------------------- Functions --------------------------------*/
 function init(){
@@ -60,6 +60,7 @@ function init(){
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
     guessedWord = ""
+    currentRow = 0
     attempts = 6
 
     resetBtnEl.addEventListener("click", init)
@@ -71,64 +72,59 @@ init()
 
 function render(){
     updateBoard()
-    updateMessage()
+    // updateMessage()
 }
 render()
 
 
 function updateBoard(){
-    // *** displayBoard ***  
-    // // *credit Megan for this code block!!!
-    // // const tileIndex = taking the rowIdx multiplying 
-    // displayBoard.forEach((row, rowIdx) => {
-    //     row.forEach((tile, tileIdx) => {
-    //         const tileIndex = rowIdx * displayBoard[0].length + tileIdx;
-            
-    //         tileEls[tileIndex].style.background = "red";
-    //         // console.log(tileEls[tileIndex]);
-    //         console.log(displayBoard[0].length)
-    //     });
-    // });
+    // **Credit Megan for the this code blcok ** //
+    displayBoard.forEach((row, rowIdx) => {
+        row.forEach((tile, tileIdx) => {
+            const tileIndex = rowIdx *displayBoard[0].length + tileIdx
 
-    
-    // ** displayBoard Alternate **
-    tileEls.forEach((tile, idx) => {
-        tileEls[idx].style.background = "red"
-        // console.log("tileEls[idx]", tileEls[idx])
+            tileEls[tileIndex].style.background ="red"
+        })
     })
-
-    // *** keyboard ***
-    keyEls.forEach((tile, idx) => {
-        keyEls[idx].style.background = "red"
-        // console.log("keyEls[idx", keyEls[idx])
-    })
-    
-
-    // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
-        // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
-        // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
-        // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
 }
 
 
-function updateMessage(){  
-    // would it be better to place this message in checkForWinner()??
-    if(winner === false && attempts === 0){
-        messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
-        // console.log("winner = false")
-    } else if(winner === false && attempts !== 0 && attempts <= 6){
-        messageEl.textContent = `You have ${attempts} turns remaining.`
-    } else{
-        messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
-        // console.log("winner = true")
-    }
+
+ 
     
-    if (guessedWord.length < 5){
-        messageEl.textContent = "The word is too short."
-    }   else if (guessedWord.length > 5){
-        messageEl.textContent = "The word is too long."
-    }
-}
+
+//     // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
+//         // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
+//         // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
+//         // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
+// }
+
+
+// function updateMessage(){  
+//     // would it be better to place this message in checkForWinner()??
+//     if(winner === false && attempts === 0){
+//         messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
+//         // console.log("winner = false")
+//     } else if(winner === false && attempts !== 0 && attempts <= 6){
+//         messageEl.textContent = `You have ${attempts} turns remaining.`
+//     } else{
+//         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
+//         // console.log("winner = true")
+//     }
+    
+//     // if (guessedWord.length <= 5){
+//     //     messageEl.textContent = "The word is too short."
+//     // }   else if (guessedWord.length >= 5){
+//     //     messageEl.textContent = "The word is too long."
+//     // }
+// }
+
+
+
+
+
+
+
 
 // **** Maybe combine both currentTurn() & checkForWinner -> both () will more than likely need to iterate through each row to see if there are any blank spaces? -> practicing DRY codeing? Would it be better to compartmentalize into different functions? **//
 
@@ -148,6 +144,7 @@ function handleClick(event){
      if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
+   
     
     console.log("Key Test", event.target.id)
     
@@ -169,6 +166,7 @@ console.log(displayBoard)
 keyEls.forEach((key, idx) => {
     key.addEventListener("click", handleClick)
 }) 
+
     // Step 6.3a: create a checkForWinner()
         // 6.3b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
         // call checkForWinner() in handleClick
