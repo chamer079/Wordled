@@ -30,7 +30,6 @@ let displayBoard
 let winner
 let randomWord
 let guessedWord
-let currentRow
 let attempts
 
 /*------------------------ Cached Element References ------------------------*/
@@ -60,7 +59,6 @@ function init(){
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
     console.log("randomWord test:", randomWord)
     guessedWord = ""
-    currentRow = 0
     attempts = 6
 
     resetBtnEl.addEventListener("click", init)
@@ -72,7 +70,7 @@ init()
 
 function render(){
     updateBoard()
-    // updateMessage()
+    updateMessage()
 }
 render()
 
@@ -81,71 +79,69 @@ function updateBoard(){
     // **Credit Megan for the this code blcok ** //
     displayBoard.forEach((row, rowIdx) => {
         row.forEach((tile, tileIdx) => {
-            const tileIndex = rowIdx *displayBoard[0].length + tileIdx
+            const tileIndex = rowIdx * displayBoard[0].length + tileIdx
 
-            tileEls[tileIndex].style.background ="red"
+            tileEls[tileIndex].style.background = "red"  // alter to assign tileEls[tileIndex] a variable for changing tile colors to show guess results?
         })
     })
+
+      // *** keyboard ***
+      keyEls.forEach((tile, idx) => {
+        keyEls[idx].style.background = "red"
+        // console.log("keyEls[idx", keyEls[idx])
+    })
+    // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
+    // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
+    // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
+    // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
 }
 
 
 
- 
+function updateMessage(){  
+    // would it be better to place this message in checkForWinner()??
+    if(winner === false && attempts === 0){
+        messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
+        // console.log("winner = false")
+    } else if(winner === false && attempts !== 0 && attempts <= 6){
+        messageEl.textContent = `You have ${attempts} turns remaining.`
+    } else{
+        messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
+        // console.log("winner = true")
+    }
     
+    // if (guessedWord.length <= 5){
+    //     messageEl.textContent = "The word is too short."
+    // }   else if (guessedWord.length >= 5){
+    //     messageEl.textContent = "The word is too long."
+    // }
+}
 
-//     // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
-//         // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
-//         // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
-//         // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
-// }
 
-
-// function updateMessage(){  
-//     // would it be better to place this message in checkForWinner()??
-//     if(winner === false && attempts === 0){
-//         messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
-//         // console.log("winner = false")
-//     } else if(winner === false && attempts !== 0 && attempts <= 6){
-//         messageEl.textContent = `You have ${attempts} turns remaining.`
-//     } else{
-//         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
-//         // console.log("winner = true")
-//     }
+// NEEDED TO MEET MVP:
+    // 1) Need to have a function enter/submit button - upon clicking the button:
+        // a) the guessedWord will be check with the random word for that turn (since guessedWord is a string -split()?) - the results from checking the letters/words will change the color of the tiles. IF... 
+                // incorrect letter = gray
+                // correct letter but worng spot = yellow
+                // correct letter & correct spot = green
+            // need messages her for: <- ???
+                // word too short
+                // word too long
+                // is not a word
+        //  b) the attempts count will decrease by 1  
+        // reset guessedWord for the next attempt
+    // 2) Have a functional reset button to restart the game one the game is over - have a corresponding message for the associated game result
+   
     
-//     // if (guessedWord.length <= 5){
-//     //     messageEl.textContent = "The word is too short."
-//     // }   else if (guessedWord.length >= 5){
-//     //     messageEl.textContent = "The word is too long."
-//     // }
-// }
-
-
-
-
-
-
-
-
-// **** Maybe combine both currentTurn() & checkForWinner -> both () will more than likely need to iterate through each row to see if there are any blank spaces? -> practicing DRY codeing? Would it be better to compartmentalize into different functions? **//
-
-      
-    
-// Step 6.2a: create a currentAttempt function - 
-  // if current attempt is empty then populate with current guessed word
-  //if row ! empty, move to the next turn / row    
-    // 6.2b: update board so that it is = to the current guessedWord of the turn
-    // 6.2c: call currentTurn() in handleClick
     
 
         
 /*----------------------------- Event Listeners -----------------------------*/       
 //Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-     if(displayBoard[event.target.id] === " " || winner === true){
+           if(displayBoard[event.target.id] === " " || winner === true){
         return
     }   
-   
-    
     console.log("Key Test", event.target.id)
     
     // *** Give credit to Tamerlan Mustafayev ***
