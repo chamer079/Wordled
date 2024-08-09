@@ -31,6 +31,9 @@ let winner
 let randomWord
 let guessedWord
 let attempts
+let currentRow
+let currentCol
+
 
 /*------------------------ Cached Element References ------------------------*/
 const displayRowEls = document.querySelectorAll(".display-row")
@@ -60,6 +63,8 @@ function init(){
     console.log("randomWord test:", randomWord)
     guessedWord = ""
     attempts = 6
+    currentRow = 0
+    currentCol = 0
 
     resetBtnEl.addEventListener("click", init)
 
@@ -139,23 +144,32 @@ function updateMessage(){
 /*----------------------------- Event Listeners -----------------------------*/       
 //Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
 function handleClick(event){
-           if(displayBoard[event.target.id] === " " || winner === true){
-        return
-    }   
-    console.log("Key Test", event.target.id)
-    
-    // *** Give credit to Tamerlan Mustafayev ***
-    let currentIndex = 0
-    tileEls.forEach(tile => {
-        if (tile.textContent.length === 0  ) {
-            tileEls[currentIndex].textContent = event.target.textContent
-            
-        } else {
-            currentIndex++
-        }
-    })   
+    let letter = event.target.textContent
 
-console.log(displayBoard)      
+    if(currentCol < 5){
+        tileEls[currentRow * 5 + currentCol].textContent = letter
+        displayBoard[currentRow][currentCol] = letter
+        currentCol++
+    }
+console.log(displayBoard, letter)
+
+//            if(displayBoard[event.target.id] === " " || winner === true){
+//         return
+//     }   
+//     console.log("Key Test", event.target.id)
+    
+//     // *** Give credit to Tamerlan Mustafayev ***
+//     let currentIndex = 0
+//     tileEls.forEach(tile => {
+//         if (tile.textContent.length === 0  ) {
+//             tileEls[currentIndex].textContent = event.target.textContent
+            
+//         } else {
+//             currentIndex++
+//         }
+//     })   
+
+// console.log(displayBoard)      
 }
 
 
