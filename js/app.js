@@ -44,10 +44,6 @@ const keyRowEls = document.querySelectorAll(".key-row")
 const keyEls = document.querySelectorAll(".key")
 const deleteEl = document.querySelector("#delete")
 const enterEl = document.querySelector("#enter")
-
-// // c(?). get the index for an id assigned to the target el in the HTML - assign this to a const called keyIndex
-// const keyboard = document.querySelectorAll(".keyboard")
-
 /*-------------------------------- Functions --------------------------------*/
 function init(){
     displayBoard = [  
@@ -78,14 +74,13 @@ function render(){
     updateMessage()
 }
 
-
 function updateBoard(){
     // **Credit Megan for the this code blcok ** //
     displayBoard.forEach((row, rowIdx) => {
         row.forEach((tile, tileIdx) => {
             const tileIndex = rowIdx * displayBoard[0].length + tileIdx
 
-            tileEls[tileIndex].style.background = "red"  // alter to assign tileEls[tileIndex] a variable for changing tile colors to show guess results?
+            tileEls[tileIndex].style.background = "red"  
         })
     })
 
@@ -94,24 +89,18 @@ function updateBoard(){
         keyEls[idx].style.background = "red"
         // console.log("keyEls[idx", keyEls[idx])
     })
-    // c. loop over board & keyboard for each el -> 1)use the current idx to access the corresponding tiles & style to correspond to the correct / incorrect letter in each tile
-    // c1. if the tile has the correct letter && in the correct tile index: tile = #079855, letter = white, +tile animation 
-    // c2. if the tile has the correct letter && ! in the correct tile index: tile = #daa520, letter = white, +tile animation
-    // c.3 if the tile ! have the correct letter && ! inthe correct tile index: tile = #616060, letter = white, +tile animation
+  
 }
 
 
 
 function updateMessage(){  
-    // would it be better to place this message in checkForWinner()??
     if(winner === false && attempts === 0){
         messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
-        // console.log("winner = false")
     } else if(winner === false && attempts !== 0){
         messageEl.textContent = `You have ${attempts} turns remaining.`      
     } else{
         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
-        // console.log("winner = true")
     }
     
     // if (guessedWord.length <= 5){
@@ -129,7 +118,6 @@ function checkWord(){
             correctLetter++
         }
     })
-    
     return correctLetter === 5
 }
 checkWord()
@@ -166,19 +154,15 @@ function handleEnter(){
     }  
 }
 
+function deleteLetter(){
+   guessedWord.pop()
+}
 
-
-
-        
 /*----------------------------- Event Listeners -----------------------------*/       
-//Handle a player clicking a letter with a handleClick function -> THIS IS FOR KEYBOARD .
-
-
 keyEls.forEach((key, idx) => {
     key.addEventListener("click", handleClick)
 }) 
 enterEl.addEventListener("click", handleEnter)
+deleteEl.addEventListener("click", deleteLetter)
 
-    // Step 6.3a: create a checkForWinner()
-        // 6.3b: if there is a winner / randomWord = wordEntered - message: "you won!" & return out of function
-        // call checkForWinner() in handleClick
+
