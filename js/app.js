@@ -152,10 +152,16 @@ function handleEnter(){
         guessedWord = ""
         updateMessage()
     }  
+   
 }
 
 function deleteLetter(){
-   guessedWord.pop()
+   if(currentCol >= 0){
+       tileEls[currentRow * 5 + currentCol].textContent = ""
+       displayBoard[currentCol][currentRow] = ""
+       currentCol--
+   }
+    updateBoard()
 }
 
 /*----------------------------- Event Listeners -----------------------------*/       
