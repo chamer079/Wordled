@@ -148,25 +148,7 @@ function handleClick(event){
         displayBoard[currentRow][currentCol] = letter
         currentCol++
     }
-    console.log(displayBoard, letter)
-    
-//            if(displayBoard[event.target.id] === " " || winner === true){
-    //         return
-    //     }   
-    //     console.log("Key Test", event.target.id)
-        
-    //     // *** Give credit to Tamerlan Mustafayev ***
-    //     let currentIndex = 0
-    //     tileEls.forEach(tile => {
-    //         if (tile.textContent.length === 0  ) {
-    //             tileEls[currentIndex].textContent = event.target.textContent
-                
-    //         } else {
-    //             currentIndex++
-    //         }
-    //     })   
-    
-    // console.log(displayBoard)      
+    console.log(displayBoard, letter)    
 }
 
 function handleEnter(){
@@ -174,9 +156,20 @@ function handleEnter(){
         return
     }
 
+    displayBoard[currentRow] = guessedWord.split("")
+    let currentRandomWord = randomWord.split("")
+    console.log("test current random word", currentRandomWord)
+    // console.log("current guessed word test:", guessedWord)
+
+    if(guessedWord === currentRandomWord){
+        winner = true
+        updateMessage()
+    } else{
+        
+    }    
   
 }
-
+handleEnter()
 
         
 /*----------------------------- Event Listeners -----------------------------*/       
