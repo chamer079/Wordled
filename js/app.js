@@ -76,55 +76,31 @@ function render(){
 
 function updateBoard(){
     // **Credit Megan for the this code blcok ** //
-
-
+  
     displayBoard.forEach((row, rowIdx) => {
         row.forEach((tile, tileIdx) => {
-            rowIdx = currentRow
-            const letterIdx = rowIdx * randomWord[0].length + tileIdx
+            const tileIndex = rowIdx * displayBoard[0].length + tileIdx
 
-            if(randomWord[letterIdx] === guessedWord[letterIdx]){
-                            tileEls[letterIdx].style.background = "#079855"
-                            tileEls[letterIdx].style.color = "#ffffff"
-                        } else if(randomWord.includes(guessedWord)){
-                            tileEls[letterIdx].style.background = "#616060"
-                            tileEls[letterIdx].style.color = "#ffffff"
-                        } else {
-                            tileEls[letterIdx].style.background = "#079855"
-                            tileEls[letterIdx].style.color = "#ffffff"
-                        }               
-                        
-                        tileEls[letterIdx].style.background = "#dedede"
-                        tileEls[letterIdx].style.color = "#000000"
+            tile = tileEls[tileIndex].textContent 
+                       
+            if(tile === ""){
+                tileEls[tileIndex].style.background = "#dedede"
+                tileEls[tileIndex].style.color = "#000000"
 
+            } else if(randomWord[tileIndex] === guessedWord[tileIndex]){
+                tileEls[tileIndex].style.background = "#079855"
+                tileEls[tileIndex].style.color = "#ffffff"
+            } else if(randomWord.includes(tile) === guessedWord.includes(tile)){
+                tileEls[tileIndex].style.background = "#616060"
+                tileEls[tileIndex].style.color = "#ffffff"
+            } else {
+                tileEls[tileIndex].style.background = "#079855"
+                tileEls[tileIndex].style.color = "#ffffff"
+            }               
+            
         })
+
     })
-    
-    // displayBoard.forEach((row, rowIdx) => {
-    //     row.forEach((tile, tileIdx) => {
-    //         const tileIndex = rowIdx * displayBoard[0].length + tileIdx
-
-    //         tile = tileEls[tileIndex].textContent 
-            
-    //         console.log("tile test", tile)
-            
-            
-    //         if(randomWord[tileIndex] === tile && guessedWord[tileIndex] === tile){
-    //             tileEls[tileIndex].style.background = "#079855"
-    //             tileEls[tileIndex].style.color = "#ffffff"
-    //         } else if(randomWord.includes(tile) && guessedWord.includes(tile)){
-    //             tileEls[tileIndex].style.background = "#616060"
-    //             tileEls[tileIndex].style.color = "#ffffff"
-    //         } else {
-    //             tileEls[tileIndex].style.background = "#079855"
-    //             tileEls[tileIndex].style.color = "#ffffff"
-    //         }               
-            
-    //         tileEls[tileIndex].style.background = "#dedede"
-    //         tileEls[tileIndex].style.color = "#000000"
-    //     })
-
-    // })
 
       // *** keyboard ***
       keyEls.forEach((tile, idx) => {
@@ -172,7 +148,7 @@ function handleClick(event){
         displayBoard[currentRow][currentCol] = letter
         currentCol++
     }
-    console.log(displayBoard, letter)    
+    // console.log(displayBoard, letter)    
 }
 
 function handleEnter(){
@@ -194,6 +170,7 @@ function handleEnter(){
         guessedWord = ""
         updateMessage()
     }  
+    render()
 }
 
 
