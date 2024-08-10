@@ -109,9 +109,7 @@ function updateMessage(){
         messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
         // console.log("winner = false")
     } else if(winner === false && attempts !== 0 && attempts <= 6){
-        messageEl.textContent = `You have ${attempts} turns remaining.`
-
-       
+        messageEl.textContent = `You have ${attempts} turns remaining.`      
     } else{
         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
         // console.log("winner = true")
@@ -152,21 +150,27 @@ function handleClick(event){
 }
 
 function handleEnter(){
-    if(guessedWord.length === 5 || winner === true){
+    if(guessedWord === 5 || winner === true){
         return
-    }
+    } 
 
     displayBoard[currentRow] = guessedWord.split("")
     let currentRandomWord = randomWord.split("")
     console.log("test current random word", currentRandomWord)
     // console.log("current guessed word test:", guessedWord)
 
+   
     if(guessedWord === currentRandomWord){
         winner = true
         updateMessage()
+    } else if(attempts === 0 && winner === false){
+        updateMessage()
     } else{
-        
-    }    
+        currentRow++
+        currentCol = 0
+        guessedWord = ""
+        updateMessage()
+    }  
   
 }
 handleEnter()
