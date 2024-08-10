@@ -158,19 +158,23 @@ h2 {
 @media only screen and (max-width: 900px) {
     body {
         display: flex;
-        /* background-color: red; */
     } 
 
     main {
         flex-flow: row wrap;
-     }    
+     }  
+     
+    #message {
+        display: flex;
+        justify-self: center;
+        text-align: center;
+    } 
 
      #game-board {
         height: 550px;
      }
 
      #instructions {
-        /* border: 3px solid tomato; */
         display: flex;
         align-items: center;
         font-size: 22px;
@@ -183,32 +187,26 @@ h2 {
 @media only screen and (max-width: 520px) {
     body {
         display: flex;
-        /* background-color: aqua; */
     }
     
     main {
-        /* border: 3px solid black; */
         height: 100%;
     } 
 
     h1 {
-        /* border: 3px solid goldenrod; */
         font-size: 50px;
         margin: 0;
     }
 
     #message {
-        /* border: 3px solid gold; */
         font-size: 30px;
         text-align: center;
         margin: 10px 0;
     }
 
     #game-board {
-        /* border: 3px solid red; */
         display: flex;
         justify-content: space-evenly;
-        /* gap: 10px; */
         height: 600px;
     }
 
@@ -222,7 +220,6 @@ h2 {
 
     .key {
         display: flex;
-        /* border: 3px solid purple; */
         width: 25px;
         height: 45px;
         font-size: 20px;
@@ -252,7 +249,6 @@ h2 {
         margin: 22px 0 0;
     } 
     #instructions {
-        /* border: 3px solid saddlebrown; */
         display: flex;
         height: 800px;
     }

@@ -72,27 +72,25 @@ function render(){
 }
 
 function updateBoard(){
-    // **Credit Megan for the this code blcok ** //
+    // **Credit Megan for the this code block: displayBoard -> tile = tileEls{...} ** //
   
        displayBoard.forEach((row, rowIdx) => {
         row.forEach((tile, tileIdx) => {
             const tileIndex = rowIdx * 5 + tileIdx
 
             tile = tileEls[tileIndex].textContent 
-            
-            console.log("tile test", tile)
-            
+                        
             if(tile === ""){
                 tileEls[tileIndex].style.background = "#dedede"
                 tileEls[tileIndex].style.color = "#000000"
-            } else if(randomWord[tileIndex] !== tile){
+            } else if(randomWord[tileIndex] === tile){
                 tileEls[tileIndex].style.background = "#079855"
                 tileEls[tileIndex].style.color = "#ffffff"
             } else if(randomWord.includes(tile)){
-                tileEls[tileIndex].style.background = "#616060"
+                tileEls[tileIndex].style.background = "#daa520"
                 tileEls[tileIndex].style.color = "#ffffff"
             } else {
-                tileEls[tileIndex].style.background = "#daa520"
+                tileEls[tileIndex].style.background = "#616060"
                 tileEls[tileIndex].style.color = "#ffffff"
             }               
         })
@@ -100,8 +98,7 @@ function updateBoard(){
 
       // *** keyboard ***
       keyEls.forEach((tile, idx) => {
-        keyEls[idx].style.background = "red"
-        // console.log("keyEls[idx", keyEls[idx])
+        // keyEls[idx].style.background = "red"
     })
   
 }
@@ -111,17 +108,14 @@ function updateBoard(){
 function updateMessage(){  
     if(winner === false && attempts === 0){
         messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
-    } else if(winner === false && attempts !== 0){
+    } else if(winner === false && attempts <= 5){
         messageEl.textContent = `You have ${attempts} turns remaining.`      
+    } else if(winner === false && attempts === 6){
+        messageEl.textContent = "Choose, but choose wisley. Good Luck!"
     } else{
         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
     }
     
-    // if (guessedWord.length < 5){
-    //     messageEl.textContent = "The word is too short."
-    // }   else if (guessedWord.length >= 5){
-    //     messageEl.textContent = "The word is too long."
-    // }
 }
 
 function checkWord(){
@@ -186,6 +180,3 @@ keyEls.forEach((key, idx) => {
 enterEl.addEventListener("click", handleEnter)
 deleteEl.addEventListener("click", deleteLetter)
 resetBtnEl.addEventListener("click", init)
-
-
-
