@@ -80,8 +80,30 @@ function updateBoard(){
         row.forEach((tile, tileIdx) => {
             const tileIndex = rowIdx * displayBoard[0].length + tileIdx
 
-            tileEls[tileIndex].style.background = "red"  
+            tileEls[tileIndex].textContent = tile 
+
+            if (tile){
+                tileEls[tileIndex].style.background = "#dedede"
+                tileEls[tileIndex].style.color = "#000000"
+                
+                if(tile === randomWord[tileIndex]){
+                    tileEls[tileIndex].style.background = "#079855"
+                    tileEls[tileIndex].style.color = "#ffffff"
+                } else if(randomWord.includes(tile)){
+                    tileEls[tileIndex].style.background = "#616060"
+                    tileEls[tileIndex].style.color = "#ffffff"
+                } else {
+                    tileEls[tileIndex].style.background = "#079855"
+                    tileEls[tileIndex].style.color = "#ffffff"
+                }               
+
+
+
+            }
+            
+
         })
+       
     })
 
       // *** keyboard ***
@@ -103,7 +125,7 @@ function updateMessage(){
         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
     }
     
-    // if (guessedWord.length <= 5){
+    // if (guessedWord.length < 5){
     //     messageEl.textContent = "The word is too short."
     // }   else if (guessedWord.length >= 5){
     //     messageEl.textContent = "The word is too long."
@@ -154,11 +176,12 @@ function handleEnter(){
     }  
 }
 
+
 function deleteLetter(){
-   if(currentCol >= 0){
+   if(currentCol <= 5 ){
+       currentCol--
        tileEls[currentRow * 5 + currentCol].textContent = ""
        displayBoard[currentCol][currentRow] = ""
-       currentCol--
    }
     updateBoard()
 }
