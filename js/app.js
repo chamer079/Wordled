@@ -77,7 +77,6 @@ function render(){
     updateBoard()
     updateMessage()
 }
-render()
 
 
 function updateBoard(){
@@ -108,7 +107,7 @@ function updateMessage(){
     if(winner === false && attempts === 0){
         messageEl.textContent = `Better luck next time.The correct word was ${randomWord} Want to try again?`
         // console.log("winner = false")
-    } else if(winner === false && attempts !== 0 && attempts <= 6){
+    } else if(winner === false && attempts !== 0){
         messageEl.textContent = `You have ${attempts} turns remaining.`      
     } else{
         messageEl.textContent = "Congratulations! You guessed the word. Want to try again?"
@@ -122,21 +121,18 @@ function updateMessage(){
     // }
 }
 
+function checkWord(){
+    let correctLetter = 0
 
-// NEEDED TO MEET MVP:
-    // 1) Need to have a function enter/submit button - upon clicking the button:
-        // a) the guessedWord will be check with the random word for that turn (since guessedWord is a string -split()?) - the results from checking the letters/words will change the color of the tiles. IF... 
-                // incorrect letter = gray
-                // correct letter but worng spot = yellow
-                // correct letter & correct spot = green
-            // need messages her for: <- ???
-                // word too short
-                // word too long
-                // is not a word
-        //  b) the attempts count will decrease by 1  
-        // reset guessedWord for the next attempt
-    // 2) Have a functional reset button to restart the game one the game is over - have a corresponding message for the associated game result  
-
+    displayBoard[currentRow].forEach((letter, idx) => {
+        if(letter === randomWord[idx]){
+            correctLetter++
+        }
+    })
+    
+    return correctLetter === 5
+}
+checkWord()
 
 function handleClick(event){
     let letter = event.target.textContent
@@ -150,17 +146,13 @@ function handleClick(event){
 }
 
 function handleEnter(){
-    if(guessedWord === 5 || winner === true){
+    if(currentCol < 5 && winner === false){
         return
     } 
-
-    displayBoard[currentRow] = guessedWord.split("")
-    let currentRandomWord = randomWord.split("")
-    console.log("test current random word", currentRandomWord)
-    // console.log("current guessed word test:", guessedWord)
-
-   
-    if(guessedWord === currentRandomWord){
+    
+    guessedWord = displayBoard[currentRow].join("")
+    
+    if(checkWord()){
         winner = true
         updateMessage()
     } else if(attempts === 0 && winner === false){
@@ -168,12 +160,14 @@ function handleEnter(){
     } else{
         currentRow++
         currentCol = 0
+        attempts--
         guessedWord = ""
         updateMessage()
     }  
-  
 }
-handleEnter()
+
+
+
 
         
 /*----------------------------- Event Listeners -----------------------------*/       
