@@ -74,20 +74,9 @@ function render(){
 function updateBoard(){
     // **Credit Megan for the this code blcok ** //
   
-    // displayRowEls.forEach((tile, idx) => {
-    //     const letterIdx = idx * currentCol[0] + idx
-
-    //     tile = tileEls[idx].textContent
-
-    //    console.log(tile)
-
-        
-    // })
-
-
-    displayRowEls.forEach((tile, tileIdx) => {
-        
-            const tileIndex = tileIdx * currentRow + tileIdx
+       displayBoard.forEach((row, rowIdx) => {
+        row.forEach((tile, tileIdx) => {
+            const tileIndex = rowIdx * 5 + tileIdx
 
             tile = tileEls[tileIndex].textContent 
             
@@ -96,20 +85,17 @@ function updateBoard(){
             if(tile === ""){
                 tileEls[tileIndex].style.background = "#dedede"
                 tileEls[tileIndex].style.color = "#000000"
-
-            } else if(randomWord[tileIndex] === tile){
+            } else if(randomWord[tileIndex] !== tile){
                 tileEls[tileIndex].style.background = "#079855"
                 tileEls[tileIndex].style.color = "#ffffff"
             } else if(randomWord.includes(tile)){
                 tileEls[tileIndex].style.background = "#616060"
                 tileEls[tileIndex].style.color = "#ffffff"
             } else {
-                tileEls[tileIndex].style.background = "#079855"
+                tileEls[tileIndex].style.background = "#daa520"
                 tileEls[tileIndex].style.color = "#ffffff"
             }               
-            checkWord()
-       
-
+        })
     })
 
       // *** keyboard ***
@@ -148,7 +134,7 @@ function checkWord(){
     })
     return correctLetter === 5
 }
-checkWord()
+
 
 function handleClick(event){
     let letter = event.target.textContent
