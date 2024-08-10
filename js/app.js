@@ -62,6 +62,7 @@ function init(){
     currentRow = 0
     currentCol = 0
 
+    resetDisplayBoard()
     render()
 } 
 init()
@@ -100,10 +101,7 @@ function updateBoard(){
       keyEls.forEach((tile, idx) => {
         // keyEls[idx].style.background = "red"
     })
-  
 }
-
-
 
 function updateMessage(){  
     if(winner === false && attempts === 0){
@@ -129,7 +127,6 @@ function checkWord(){
     return correctLetter === 5
 }
 
-
 function handleClick(event){
     let letter = event.target.textContent
     
@@ -138,7 +135,7 @@ function handleClick(event){
         displayBoard[currentRow][currentCol] = letter
         currentCol++
     }
-    console.log(displayBoard, letter)    
+    console.log(letter)    
 }
 
 function handleEnter(){
@@ -163,7 +160,6 @@ function handleEnter(){
     render()
 }
 
-
 function deleteLetter(){
    if(currentCol <= 5 ){
        currentCol--
@@ -173,6 +169,13 @@ function deleteLetter(){
     updateBoard()
 }
 
+function resetDisplayBoard(){
+    tileEls.forEach((tile) => {
+        tile.textContent = ""
+        tile.style.background = "#dedede"
+        tile.style.color ="#000000"
+    })
+}
 /*----------------------------- Event Listeners -----------------------------*/       
 keyEls.forEach((key, idx) => {
     key.addEventListener("click", handleClick)
@@ -180,3 +183,4 @@ keyEls.forEach((key, idx) => {
 enterEl.addEventListener("click", handleEnter)
 deleteEl.addEventListener("click", deleteLetter)
 resetBtnEl.addEventListener("click", init)
+

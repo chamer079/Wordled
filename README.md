@@ -79,9 +79,15 @@
 
 
 ## Next Steps
- * Incorporate a landing page intorducing the game and playing instructions.
- * Use an API to pull a bigger variety of 5 letter words.
- * Add a "Not a word" feature with a message notifying that said submitted word is not a word.
- * Use an API to pull a variety of 5 letter "Not a word" words.
- * Incorporate a dropdown menu for instructions while playing the game.
- * Incorporate a toggle switch for light mode and dark mode.
+* Incorporate a landing page intorducing the game and playing instructions.
+* Have the tiles on the key board change colors pending if the letter is in the word and/or in the correct space.
+* Use an API to pull a bigger variety of 5 letter words.
+* Add a "Not a word" feature with a message notifying that said submitted word is not a word.
+* Use an API to pull a variety of 5 letter "Not a word" words.
+* Incorporate additional messages:
+    * "Word is too short"
+    * "Word is too long"
+    * "...is not a word."
+* Incorporate an animation feature to the tiles upon revealing if they are in the word and/or correct space.
+* Incorporate a dropdown menu for instructions while playing the game.
+* Incorporate a toggle switch for light mode and dark mode.
