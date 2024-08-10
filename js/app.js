@@ -74,8 +74,8 @@ function render(){
 
 function updateBoard(){
     // **Credit Megan for the this code block: displayBoard -> tile = tileEls{...} ** //
-  
-        displayBoard.forEach((row, rowIdx) => {
+    
+       displayBoard.forEach((row, rowIdx) => {
         row.forEach((tile, tileIdx) => {
             const tileIndex = rowIdx * 5 + tileIdx
 
@@ -96,33 +96,6 @@ function updateBoard(){
             }               
         })
     })
-
-      // *** keyboard ***
-      keyEls.forEach((tile, idx) => {
-        // keyEls[idx].style.background = "red"
-    })
-    
-
-    // displayBoard[currentRow].forEach((letter, idx) => {
-    //     const letterIdx = currentRow * 5 + idx
-    //     console.log("letterIdx", letterIdx)
-
-
-    //     if(letter === ""){
-    //         tileEls[letterIdx].style.background = "#dedede"
-    //         tileEls[letterIdx].style.color = "#000000"
-    //     } else if(randomWord[letterIdx] === letter){
-    //         tileEls[letterIdx].style.background = "#079855"
-    //         tileEls[letterIdx].style.color = "#ffffff"
-    //     } else if (randomWord[letterIdx].includes(letter)){
-    //         tileEls[letterIdx].style.background = "#079855"
-    //         tileEls[letterIdx].style.color = "#ffffff"
-    //     } else {
-    //         tileEls[letterIdx].style.background = "#616060"
-    //         tileEls[letterIdx].style.color = "#ffffff"
-    //     }
-    //     console.log(randomWord[letterIdx] === letter)
-    // })
 }
 
 function updateMessage(){  
@@ -145,8 +118,8 @@ function checkWord(){
         if(letter === randomWord[idx]){
             correctLetter++
         }
-        return correctLetter === 5
     })
+    return correctLetter === 5
 }
 
 function handleClick(event){
