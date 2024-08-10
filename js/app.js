@@ -75,54 +75,53 @@ function render(){
 function updateBoard(){
     // **Credit Megan for the this code block: displayBoard -> tile = tileEls{...} ** //
   
-    
-    displayBoard[currentRow].forEach((letter, idx) => {
-        const letterIdx = currentRow * 5 + idx
-        // console.log("letterIdx", letterIdx)
+        displayBoard.forEach((row, rowIdx) => {
+        row.forEach((tile, tileIdx) => {
+            const tileIndex = rowIdx * 5 + tileIdx
 
+            tile = tileEls[tileIndex].textContent 
+                        
+            if(tile === ""){
+                tileEls[tileIndex].style.background = "#dedede"
+                tileEls[tileIndex].style.color = "#000000"
+            } else if(randomWord[tileIndex] === tile){
+                tileEls[tileIndex].style.background = "#079855"
+                tileEls[tileIndex].style.color = "#ffffff"
+            } else if(randomWord.includes(tile)){
+                tileEls[tileIndex].style.background = "#daa520"
+                tileEls[tileIndex].style.color = "#ffffff"
+            } else {
+                tileEls[tileIndex].style.background = "#616060"
+                tileEls[tileIndex].style.color = "#ffffff"
+            }               
+        })
+    })
 
-        if(letter === ""){
-            tileEls[letterIdx].style.background = "#dedede"
-            tileEls[letterIdx].style.color = "#000000"
-        } else if(randomWord[letterIdx] === letter){
-            tileEls[letterIdx].style.background = "#079855"
-            tileEls[letterIdx].style.color = "#ffffff"
-        } else if (randomWord[letterIdx].includes(letter)){
-            tileEls[letterIdx].style.background = "#079855"
-            tileEls[letterIdx].style.color = "#ffffff"
-        } else {
-            tileEls[letterIdx].style.background = "#616060"
-            tileEls[letterIdx].style.color = "#ffffff"
-        }
-        // console.log(randomWord[letterIdx] === letter)
+      // *** keyboard ***
+      keyEls.forEach((tile, idx) => {
+        // keyEls[idx].style.background = "red"
     })
     
-    //    displayBoard.forEach((row, rowIdx) => {
-        //     row.forEach((tile, tileIdx) => {
-            //         const tileIndex = rowIdx * 5 + tileIdx
-            
-            //         tile = tileEls[tileIndex].textContent 
-            
-            //         if(tile === ""){
-                //             tileEls[tileIndex].style.background = "#dedede"
-                //             tileEls[tileIndex].style.color = "#000000"
-                //         } else if(randomWord[tileIndex] === tile){
-                    //             tileEls[tileIndex].style.background = "#079855"
-                    //             tileEls[tileIndex].style.color = "#ffffff"
-                    //         } else if(randomWord.includes(tile)){
-                        //             tileEls[tileIndex].style.background = "#daa520"
-                        //             tileEls[tileIndex].style.color = "#ffffff"
-                        //         } else {
-                            //             tileEls[tileIndex].style.background = "#616060"
-                            //             tileEls[tileIndex].style.color = "#ffffff"
-                            //         }               
-                            //     })
-                            // })
-                            
-                            //   // *** keyboard ***
-                            //   keyEls.forEach((tile, idx) => {
-                                //     // keyEls[idx].style.background = "red"
-                                
+
+    // displayBoard[currentRow].forEach((letter, idx) => {
+    //     const letterIdx = currentRow * 5 + idx
+    //     console.log("letterIdx", letterIdx)
+
+
+    //     if(letter === ""){
+    //         tileEls[letterIdx].style.background = "#dedede"
+    //         tileEls[letterIdx].style.color = "#000000"
+    //     } else if(randomWord[letterIdx] === letter){
+    //         tileEls[letterIdx].style.background = "#079855"
+    //         tileEls[letterIdx].style.color = "#ffffff"
+    //     } else if (randomWord[letterIdx].includes(letter)){
+    //         tileEls[letterIdx].style.background = "#079855"
+    //         tileEls[letterIdx].style.color = "#ffffff"
+    //     } else {
+    //         tileEls[letterIdx].style.background = "#616060"
+    //         tileEls[letterIdx].style.color = "#ffffff"
+    //     }
+    //     console.log(randomWord[letterIdx] === letter)
     // })
 }
 
@@ -189,7 +188,6 @@ function deleteLetter(){
        tileEls[currentRow * 5 + currentCol].textContent = ""
        displayBoard[currentCol][currentRow] = ""
    }
-    updateBoard()
 }
 
 function resetDisplayBoard(){

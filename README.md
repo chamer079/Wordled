@@ -69,6 +69,21 @@
 [Here's a sneak peak.](https://www.figma.com/proto/Hm7sYLy7xYfgoEL5ow7ds2/Wordled?node-id=0-1&t=f99EDojvJDawTTFb-1)
 
 ## Attributions
+This code snipet was provided by Megan Hawkins.
+```js
+displayBoard.forEach((row, rowIdx) => {
+        row.forEach((tile, tileIdx) => {
+            const tileIndex = rowIdx * displayBoard[0].length + tileIdx;
+            tileEls[tileIndex].style.background = "red";
+            console.log(tileEls[tileIndex]);
+        });
+    });
+```
+While working on this game, the orignial code block underwent some changes.
+
+
+
+## Acknowledgements
 * I would like to give thanks to Megan Hawkins and Tamerlan Mustafayev for their support and experience during this project.
 * ChatGPT for being on call for late night help.
 
@@ -91,3 +106,4 @@
 * Incorporate an animation feature to the tiles upon revealing if they are in the word and/or correct space.
 * Incorporate a dropdown menu for instructions while playing the game.
 * Incorporate a toggle switch for light mode and dark mode.
+* Incorporating features to make the game more user friendly on a tablet / smartphone vs a desktop.
