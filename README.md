@@ -68,6 +68,9 @@
 ### Wireframe
 [Here's a sneak peak.](https://www.figma.com/proto/Hm7sYLy7xYfgoEL5ow7ds2/Wordled?node-id=0-1&t=f99EDojvJDawTTFb-1)
 
+## Deployed Site
+[Play the game.](https://chamer079.github.io/Wordled/)
+
 ## Attributions
 This code snipet was provided by Megan Hawkins.
 ```js
@@ -82,10 +85,10 @@ displayBoard.forEach((row, rowIdx) => {
 While working on this game, the orignial code block underwent some changes.
 
 
-
 ## Acknowledgements
 * I would like to give thanks to Megan Hawkins and Tamerlan Mustafayev for their support and experience during this project.
 * ChatGPT for being on call for late night help.
+
 
 ## Technologies Used
 1. JavaScript
