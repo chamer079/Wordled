@@ -152,7 +152,6 @@ function handleEnter(){
         guessedWord = ""
         updateMessage()
     }  
-   
 }
 
 function deleteLetter(){

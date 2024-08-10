@@ -96,10 +96,26 @@ h1 {
 }
 
 #delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DEDEDE;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.325);
+    margin: 3px;
+    font-size: 25px;
     width: 90px;
 }
 
 #enter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DEDEDE;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.325);
+    margin: 3px;
+    font-size: 25px;
     width: 90px;
 }
 
@@ -214,13 +230,17 @@ h2 {
     }
 
     #delete {
+        display: flex;
+        width: 68px;
         font-size: 20px;
-        width: 65px;
+        border-radius: 5px;
     }
 
     #enter {
+        display: flex;
+        width: 68px;
         font-size: 20px;
-        width: 65px;
+        border-radius: 5px;
     }
 
     button {
