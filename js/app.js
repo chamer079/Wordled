@@ -56,7 +56,6 @@ function init(){
     ]
     winner = false
     randomWord = wordBank[(Math.floor(Math.random() * wordBank.length))]
-    console.log("randomWord test:", randomWord)
     guessedWord = ""
     attempts = 6
     currentRow = 0
@@ -72,10 +71,8 @@ function render(){
     updateMessage()
 }
 
-function updateBoard(){
-    // **Credit Megan for the this code block: displayBoard -> tile = tileEls{...} ** //
-    
-       displayBoard.forEach((row, rowIdx) => {
+function updateBoard(){    
+    displayBoard.forEach((row, rowIdx) => {
         row.forEach((tile, tileIdx) => {
             const tileIndex = rowIdx * 5 + tileIdx
 
@@ -130,7 +127,6 @@ function handleClick(event){
         displayBoard[currentRow][currentCol] = letter
         currentCol++
     }
-    console.log(letter)    
 }
 
 function handleEnter(){
