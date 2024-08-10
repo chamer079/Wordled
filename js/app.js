@@ -62,12 +62,9 @@ function init(){
     currentRow = 0
     currentCol = 0
 
-    resetBtnEl.addEventListener("click", init)
-
     render()
 } 
 init()
-    
 
 function render(){
     updateBoard()
@@ -77,28 +74,41 @@ function render(){
 function updateBoard(){
     // **Credit Megan for the this code blcok ** //
   
-    displayBoard.forEach((row, rowIdx) => {
-        row.forEach((tile, tileIdx) => {
-            const tileIndex = rowIdx * displayBoard[0].length + tileIdx
+    // displayRowEls.forEach((tile, idx) => {
+    //     const letterIdx = idx * currentCol[0] + idx
+
+    //     tile = tileEls[idx].textContent
+
+    //    console.log(tile)
+
+        
+    // })
+
+
+    displayRowEls.forEach((tile, tileIdx) => {
+        
+            const tileIndex = tileIdx * currentRow + tileIdx
 
             tile = tileEls[tileIndex].textContent 
-                       
+            
+            console.log("tile test", tile)
+            
             if(tile === ""){
                 tileEls[tileIndex].style.background = "#dedede"
                 tileEls[tileIndex].style.color = "#000000"
 
-            } else if(randomWord[tileIndex] === guessedWord[tileIndex]){
+            } else if(randomWord[tileIndex] === tile){
                 tileEls[tileIndex].style.background = "#079855"
                 tileEls[tileIndex].style.color = "#ffffff"
-            } else if(randomWord.includes(tile) === guessedWord.includes(tile)){
+            } else if(randomWord.includes(tile)){
                 tileEls[tileIndex].style.background = "#616060"
                 tileEls[tileIndex].style.color = "#ffffff"
             } else {
                 tileEls[tileIndex].style.background = "#079855"
                 tileEls[tileIndex].style.color = "#ffffff"
             }               
-            
-        })
+            checkWord()
+       
 
     })
 
@@ -148,7 +158,7 @@ function handleClick(event){
         displayBoard[currentRow][currentCol] = letter
         currentCol++
     }
-    // console.log(displayBoard, letter)    
+    console.log(displayBoard, letter)    
 }
 
 function handleEnter(){
@@ -189,5 +199,7 @@ keyEls.forEach((key, idx) => {
 }) 
 enterEl.addEventListener("click", handleEnter)
 deleteEl.addEventListener("click", deleteLetter)
+resetBtnEl.addEventListener("click", init)
+
 
 
